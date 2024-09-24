@@ -1,7 +1,5 @@
 import React from "react";
-import "./categoryCard.css";
-
-import { Link } from "react-router-dom";
+import "./collectionCard.css";
 
 import {
   Box,
@@ -12,27 +10,23 @@ import {
   Typography,
 } from "@mui/material";
 
-function CategoryCard() {
+function CollectionCard() {
   return (
-    <Box width={"240px"}>
+    <Box>
       <Card>
-        <CardActionArea style={{ background: "#8E9AA3" }}>
+        <CardActionArea>
           <CardMedia
             component="img"
-            image="/images/art1.png"
+            width="240px"
+            image="/images/art2.png"
             alt="green iguana"
+            style={{ borderRadius: "50%" }}
           />
           <CardContent>
             <Typography
               variant="h6"
               component="div"
-              style={{
-                lineHeight: "24px",
-                textAlign: "center",
-                fontSize: "1.2rem",
-                fontWeight: 700,
-                color: "#FFFFFF",
-              }}
+              style={{ height: "35px", textAlign: "center", fontWeight: 700 }}
             >
               ART
             </Typography>
@@ -43,4 +37,4 @@ function CategoryCard() {
   );
 }
 
-export default CategoryCard;
+export default CollectionCard;

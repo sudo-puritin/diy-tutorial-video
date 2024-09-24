@@ -20,11 +20,11 @@ function HeroSlice() {
             className="btnDetail"
             variant="contained"
             sx={{
-              width: "324px",
-              padding: "32px 64px",
+              width: "70%",
+              padding: "1.2rem 2.4rem",
               borderRadius: "8px",
               backgroundColor: "#984144",
-              fontSize: "24px",
+              fontSize: "1.4rem",
               color: "#FFFFFF",
             }}
           >

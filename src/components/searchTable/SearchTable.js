@@ -53,7 +53,7 @@ function SearchTable() {
   };
 
   return (
-    <Box component="div">
+    <Box component="div" style={{ padding: "16px 32px 16px 32px" }}>
       <Accordion className="searchContainer">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

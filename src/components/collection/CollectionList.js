@@ -1,15 +1,15 @@
 import React from "react";
-import "./categoryList.css";
-
+import "./collectionList.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import CategoryCard from "./CategoryCard";
+import CollectionCard from "./CollectionCard";
+
 import { Typography } from "@mui/material";
 
-function CategoryList() {
+function collectionList() {
   return (
-    <div className="categoryList">
+    <div className="collectionList">
       <Typography
         variant="h3"
         noWrap
@@ -23,30 +23,30 @@ function CategoryList() {
           textDecoration: "none",
         }}
       >
-        Category
+        Collection
       </Typography>
       <Swiper grabCursor={true} spaceBetween={24} slidesPerView={5.5}>
         <SwiperSlide>
-          <CategoryCard />
+          <CollectionCard />
         </SwiperSlide>
         <SwiperSlide>
-          <CategoryCard />
+          <CollectionCard />
         </SwiperSlide>
         <SwiperSlide>
-          <CategoryCard />
+          <CollectionCard />
         </SwiperSlide>
         <SwiperSlide>
-          <CategoryCard />
+          <CollectionCard />
         </SwiperSlide>
         <SwiperSlide>
-          <CategoryCard />
+          <CollectionCard />
         </SwiperSlide>
         <SwiperSlide>
-          <CategoryCard />
+          <CollectionCard />
         </SwiperSlide>
       </Swiper>
     </div>
   );
 }
 
-export default CategoryList;
+export default collectionList;
