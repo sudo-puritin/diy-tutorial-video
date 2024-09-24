@@ -1,0 +1,25 @@
+.slideItemImg {
+  cursor: default;
+  position: relative;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.slideItemContainer {
+  cursor: default;
+  position: absolute;
+  top: 50%;
+  left: 80px;
+  max-width: 900px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.btnDetail:hover {
+  filter: brightness(130%);
+  font-weight: 700 !important;
+}

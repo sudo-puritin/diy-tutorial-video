@@ -1,46 +1,63 @@
-# Getting Started with Create React App and Redux
+# DIY Tutorial Videos with MUI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## The Project Description:
 
-## Available Scripts
+- Là một nơi để giao lưu và chia sẽ các tips/videos về thủ công.
 
-In the project directory, you can run:
+- Application có thể đăng video. Application cho phép xây dựng thương hiệu cá nhân với cộng đồng yêu thích nghệ thuật.
 
-### `npm start`
+- Application phải cạnh tranh với các trang xã hội chuyên chia sẽ video nổi tiếng khác như Youtube, TikTok hay mạng xã hội nổi tiếng như Reddit, Facebook, Instagram, etc.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## User Story:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+DIY là một trang mạng xã hội cho phép người dung có thể tham gia bằng cách tạo tài khoản. Mỗi tài khoản phải có Tên, Email và Password.
 
-### `npm test`
+Đối với người chưa tham gia, người dùng vẫn có thể xem các video, tuy nhiên sẽ không thể tương tác với bài post.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Sau khi tham gia, người dùng có thể update profile (Avatar, Personal Info, Social Link và giới thiệu bản thân).
 
-### `npm run build`
+Người dùng có thể post bài viết + hình ảnh/Video. Người dùng có thể quản lý các video, người xem có thể tương tác vào bài post.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- Người xem có thể Follow người khác để theo dõi các bài post của nhau. -->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Authentication
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+As a user, I can sign in with my email and password.
+As a user, I can register for a new account with email and password.
+As a user, I can stay signed in after refreshing the page.
 
-### `npm run eject`
+### Users
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+As a user, I can see a list of other users so that I can send follow requests.
+As a user, I can see my current profile info.
+As a user, I can see a specific user's profile given a user ID.
+As a user, I can update my profile with Avatar, Company, Job Title, Social Links, and a short description.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Posts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+As a user, I can see a list of posts.
+As a user, I can create a new post with text content and an image/video.
+As a user, I can edit my posts.
+As a user, I can delete my posts.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- ### Comments
 
-## Learn More
+As a user, I can see a list of comments on a post.
+As a user, I can write comments on a post.
+As a user, I can update my comments.
+As a user, I can delete my comments. -->
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Reactions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+As a user, I can react like or dislike to a post or a comment.
+
+<!-- ### Follower
+
+As a user, I can do follow request to another user.
+As a user, I can see a list of following.
+As a user, I can un-follow another one.
+As a user, I can block another user if I don't want to watch or see their activity -->
+
+## API endpoints
+
+Nothing to write at the moment.

@@ -1,0 +1,11 @@
+.searchContainer {
+  border-radius: 8px;
+  background: #ede2d1 !important;
+  box-shadow: none !important;
+
+  #panel1-header {
+    .Mui-expanded {
+      margin: 0 !important;
+    }
+  }
+}
