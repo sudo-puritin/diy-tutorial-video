@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FormProvider, FSelect, FTextField } from "../form";
 
+import "./searchTable.scss";
+
 import {
   Accordion,
   AccordionDetails,
@@ -22,8 +24,6 @@ import {
   MATERIAL_OPTION,
   TOOLS_OPTION,
 } from "../../constants/hompage.constants";
-
-import "./searchTable.css";
 
 const defaultValue = {
   videoTitle: "",
@@ -53,7 +53,7 @@ function SearchTable() {
   };
 
   return (
-    <Box component="div" style={{ padding: "16px 32px 16px 32px" }}>
+    <Box component="div" style={{ padding: "16px 0px 16px 0px" }}>
       <Accordion className="searchContainer">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -65,11 +65,16 @@ function SearchTable() {
         <AccordionDetails>
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={3} mb={2}>
-              <Grid container spacing={2}>
-                <Grid size={4}>
+              <Grid
+                className="grid_container"
+                container
+                spacing={2}
+                columns={12}
+              >
+                <Grid className="grid_box" size={4}>
                   <FTextField name="videoTitle" label="Video Title" />
                 </Grid>
-                <Grid size={4}>
+                <Grid className="grid_box" size={4}>
                   <FSelect name="duration" label="Duration">
                     {DURATION_OPTION.map((option) => (
                       <option key={option.code} value={option.label}>
@@ -78,7 +83,7 @@ function SearchTable() {
                     ))}
                   </FSelect>
                 </Grid>
-                <Grid size={4}>
+                <Grid className="grid_box" size={4}>
                   <FSelect name="difficulty" label="Difficulty">
                     {DIFFICULTY_OPTION.map((option) => (
                       <option key={option.code} value={option.label}>
@@ -87,7 +92,7 @@ function SearchTable() {
                     ))}
                   </FSelect>
                 </Grid>
-                <Grid size={4}>
+                <Grid className="grid_box" size={4}>
                   <FSelect name="category" label="Category">
                     {CATEGORY_OPTION.map((option) => (
                       <option key={option.code} value={option.label}>
@@ -96,7 +101,7 @@ function SearchTable() {
                     ))}
                   </FSelect>
                 </Grid>
-                <Grid size={4}>
+                <Grid className="grid_box" size={4}>
                   <FSelect name="material" label="Material">
                     {MATERIAL_OPTION.map((option) => (
                       <option key={option.code} value={option.label}>
@@ -105,7 +110,7 @@ function SearchTable() {
                     ))}
                   </FSelect>
                 </Grid>
-                <Grid size={4}>
+                <Grid className="grid_box" size={4}>
                   <FSelect name="tools" label="Tools">
                     {TOOLS_OPTION.map((option) => (
                       <option key={option.code} value={option.label}>
@@ -114,13 +119,19 @@ function SearchTable() {
                     ))}
                   </FSelect>
                 </Grid>
-                <Grid size={4}>
+                <Grid className="grid_box" size={4}>
                   <LoadingButton
+                    className="resultBtn"
                     fullWidth
                     size="large"
                     type="submit"
                     variant="contained"
                     loading={isSubmitting}
+                    style={{
+                      background: "#35494B",
+                      color: "#FFFFFF",
+                      fontWeight: 700,
+                    }}
                   >
                     SHOW RESULTS
                   </LoadingButton>

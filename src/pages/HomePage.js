@@ -1,9 +1,9 @@
 import React from "react";
 
 import HeroSlice from "../components/heroSlice/HeroSlice";
-import SearchTable from "../components/searchTable/SearchTable";
-import CategoryList from "../components/category/CategoryList";
-import CollectionList from "../components/collection/CollectionList";
+import SearchTable from "../components/searchTable";
+import CollectionList from "../components/collection";
+import CategoryList from "../components/category";
 
 function HomePage() {
   return (

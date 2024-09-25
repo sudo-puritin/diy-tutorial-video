@@ -1,0 +1,27 @@
+.searchContainer {
+  background: #ede2d1 !important;
+  box-shadow: none !important;
+
+  #panel1-header {
+    .Mui-expanded {
+      margin: 0 !important;
+    }
+  }
+}
+
+.resultBtn:hover {
+  filter: brightness(130%);
+}
+
+@media screen and (max-width: 640px) {
+  .grid_container {
+    display: flex;
+    flex-direction: column;
+    .grid_box {
+      width: 100%;
+      .resultBtn {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

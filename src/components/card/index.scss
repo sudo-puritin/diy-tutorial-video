@@ -1,0 +1,17 @@
+.card_container {
+  width: 340px;
+  border-radius: 0px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  .card_info {
+    width: 100%;
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+// @media screen and (max-width: 1709px) {
+//   .card_container {
+//     width: 280px;
+//   }
+// }

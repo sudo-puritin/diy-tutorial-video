@@ -1,9 +1,9 @@
 import React from "react";
-import "./collectionList.css";
+import "./collectionList.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import CollectionCard from "./CollectionCard";
+import CollectionCard from "./collectionCard";
 
 import { Typography } from "@mui/material";
 
@@ -25,23 +25,23 @@ function collectionList() {
       >
         Collection
       </Typography>
-      <Swiper grabCursor={true} spaceBetween={24} slidesPerView={5.5}>
-        <SwiperSlide>
+      <Swiper grabCursor={true} spaceBetween={24} slidesPerView={"auto"}>
+        <SwiperSlide style={{ width: 240 }}>
           <CollectionCard />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide style={{ width: 240 }}>
           <CollectionCard />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide style={{ width: 240 }}>
           <CollectionCard />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide style={{ width: 240 }}>
           <CollectionCard />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide style={{ width: 240 }}>
           <CollectionCard />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide style={{ width: 240 }}>
           <CollectionCard />
         </SwiperSlide>
       </Swiper>

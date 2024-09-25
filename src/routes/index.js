@@ -2,15 +2,15 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import MainLayout from "../layouts/MainLayout";
+import BlankLayout from "../layouts/BlankLayout";
 
 import HomePage from "../pages/HomePage";
 import CollectionPage from "../pages/CollectionPage";
 import CategoryPage from "../pages/CategoryPage";
-import SearchPage from "../pages/SearchPage";
-import BlankLayout from "../layouts/BlankLayout";
-import NotFoundPage from "../pages/NotFoundPage";
-import RegisterPage from "../pages/RegisterPage";
-import LoginPage from "../pages/LoginPage";
+import SearchPage from "../pages/searchPage";
+import NotFoundPage from "../pages/notFoundPage";
+import RegisterPage from "../pages/registerPage";
+import LoginPage from "../pages/loginPage";
 import VideoDetail from "../pages/VideoDetail";
 
 function Router() {

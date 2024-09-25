@@ -1,11 +1,10 @@
 import React from "react";
-import "./categoryList.css";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-
-import CategoryCard from "./CategoryCard";
 import { Typography } from "@mui/material";
+
+import "./categoryList.scss";
+import CategoryCard from "./categoryCard";
 
 function CategoryList() {
   return (
@@ -25,7 +24,7 @@ function CategoryList() {
       >
         Category
       </Typography>
-      <Swiper grabCursor={true} spaceBetween={24} slidesPerView={5.5}>
+      <Swiper grabCursor={true} spaceBetween={24} slidesPerView={"auto"}>
         <SwiperSlide>
           <CategoryCard />
         </SwiperSlide>

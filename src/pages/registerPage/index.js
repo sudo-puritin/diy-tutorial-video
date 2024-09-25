@@ -1,29 +1,31 @@
 import React, { useState } from "react";
-
-import apiService from "../app/apiService";
-
-import { FCheckbox, FormProvider, FTextField } from "../components/form";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { Link, Link as RouterLink } from "react-router-dom";
 
-import { Link as RouterLink } from "react-router-dom";
+import { FormProvider, FTextField } from "../../components/form";
+
 import {
   Alert,
   Container,
   IconButton,
   InputAdornment,
-  Link,
   Stack,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
-const LoginSchema = Yup.object().shape({
+import "./index.scss";
+
+const RegisterSchema = Yup.object().shape({
   firstName: Yup.string().required("First name is required"),
   lastName: Yup.string().required("Last name is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
+  email: Yup.string().email("Invalid Email").required("Email is required"),
   password: Yup.string().required("Password is required"),
+  passwordConfirmation: Yup.string()
+    .required("Please confirm your password")
+    .oneOf([Yup.ref("password")], "Password must match"),
 });
 
 const defaultValues = {
@@ -31,12 +33,16 @@ const defaultValues = {
   lastName: "",
   email: "",
   password: "",
-  remember: false,
+  passwordConfirmation: "",
 };
 
-function LoginPage() {
+function RegisterPage() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] =
+    useState(false);
+
   const methods = useForm({
-    resolver: yupResolver(LoginSchema),
+    resolver: yupResolver(RegisterSchema),
     defaultValues,
   });
 
@@ -47,25 +53,8 @@ function LoginPage() {
     formState: { errors, isSubmitting },
   } = methods;
 
-  const [showPassword, setShowPassword] = useState(false);
-
   const onSubmit = async (data) => {
-    console.log("🚀 Puritin ~ onSubmit ~ data:", data);
-    // const from = location.state?.from.pathname || "/";
-    let { firstName, lastName, email, password } = data;
-
-    try {
-      const response = await apiService.post("/users", {
-        firstName,
-        lastName,
-        email,
-        password,
-      });
-      console.log("🚀 Puritin ~ onSubmit ~ response:", response);
-    } catch (error) {
-      reset();
-      setError("responseError", error);
-    }
+    console.log(data);
   };
 
   return (
@@ -76,14 +65,14 @@ function LoginPage() {
             <Alert severity="error">{errors.responseError.message}</Alert>
           )}
           <Alert severity="info">
-            Don't have an account?{" "}
-            <Link variant="subtitle2" component={RouterLink} to="/register">
-              Get started
+            Already have an account?{" "}
+            <Link variant="subtitle2" component={RouterLink} to="/login">
+              Sign in
             </Link>
           </Alert>
+
           <FTextField name="firstName" label="First name" />
           <FTextField name="lastName" label="Last name" />
-
           <FTextField name="email" label="Email address" />
           <FTextField
             name="password"
@@ -104,33 +93,43 @@ function LoginPage() {
               ),
             }}
           />
+          <FTextField
+            name="passwordConfirmation"
+            label="Password Confirmation"
+            type={showPasswordConfirmation ? "text" : "password"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment>
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={() =>
+                      setShowPasswordConfirmation(!showPasswordConfirmation)
+                    }
+                    onMouseDown={(e) => e.preventDefault()}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          <LoadingButton
+            className="register_btn"
+            fullWidth
+            size="large"
+            type="submit"
+            variant="contained"
+            loading={isSubmitting}
+            sx={{ fontWeight: 700 }}
+          >
+            Register
+          </LoadingButton>
         </Stack>
-
-        <Stack
-          direction="row"
-          sx={{ my: 2 }}
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <FCheckbox name="remember" label="Remember me" />
-
-          <Link component={RouterLink} variant="subtitle2" to="/">
-            Forgot password?
-          </Link>
-        </Stack>
-
-        <LoadingButton
-          fullWidth
-          size="large"
-          type="submit"
-          variant="contained"
-          loading={isSubmitting}
-        >
-          Login
-        </LoadingButton>
       </FormProvider>
     </Container>
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

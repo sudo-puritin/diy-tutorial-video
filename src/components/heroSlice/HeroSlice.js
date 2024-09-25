@@ -1,36 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import "./heroSlice.css";
-
 import { Button } from "@mui/material";
+
+import classes from "./heroSlice.module.scss";
 
 function HeroSlice() {
   return (
     <>
-      <img
-        className="slideItemImg"
-        src="images/heroImages/1.png"
-        alt="heroImage"
-      />
-      <div className="slideItemContainer">
-        <img src="images/heroImages/hero-text.png" alt="hero-text" />
-        <Link to={""} className="btnDetailWrapper">
-          <Button
-            className="btnDetail"
-            variant="contained"
-            sx={{
-              width: "70%",
-              padding: "1.2rem 2.4rem",
-              borderRadius: "8px",
-              backgroundColor: "#984144",
-              fontSize: "1.4rem",
-              color: "#FFFFFF",
-            }}
-          >
-            Learn More
-          </Button>
-        </Link>
+      <div
+        className={classes["slideItemImg"]}
+        style={{ backgroundImage: "url(/images/heroImages/1.png)" }}
+      >
+        <div className={classes["slideItemContainer"]}>
+          <div>
+            <img
+              src="images/heroImages/hero-text.png"
+              alt="hero-text"
+              className={classes["image_text"]}
+            />
+          </div>
+          <Link to={""} className={classes["btnDetailWrapper"]}>
+            <Button className={classes["btnDetail"]} variant="contained">
+              Learn More
+            </Button>
+          </Link>
+        </div>
       </div>
     </>
   );
