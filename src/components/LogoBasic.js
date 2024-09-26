@@ -1,19 +1,17 @@
-import { Link as RouterLink } from "react-router-dom";
-import { Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import logoHeader from "../images/logoHeader.png";
 
-function LogoBasic({ disabledLink = false, sx }) {
-  const logo = (
-    <Box sx={{ width: 80, height: 80, ...sx }}>
+function LogoBasic({ other }) {
+  const navigate = useNavigate();
+  return (
+    <div
+      style={{ width: 80, height: 80, cursor: "pointer" }}
+      {...other}
+      onClick={() => navigate("/")}
+    >
       <img src={logoHeader} alt="logo" width="100%" />
-    </Box>
+    </div>
   );
-
-  if (disabledLink) {
-    return <>{logo}</>;
-  }
-
-  return <RouterLink to="/">{logo}</RouterLink>;
 }
 
 export default LogoBasic;

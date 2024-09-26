@@ -10,16 +10,18 @@ import * as Yup from "yup";
 import { Link as RouterLink } from "react-router-dom";
 import {
   Alert,
-  Container,
   IconButton,
   InputAdornment,
   Link,
   Stack,
+  Typography,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
-import "./index.scss";
+import "./LoginPage.scss";
+import LogoBasic from "../../components/LogoBasic";
+import { PRIMARY } from "../../themes";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -63,77 +65,90 @@ function LoginPage() {
   };
 
   return (
-    <Container maxWidth="xs">
-      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={3}>
-          {!!errors.responseError && (
-            <Alert severity="error">{errors.responseError.message}</Alert>
-          )}
-          <Alert severity="info">
-            Don't have an account?{" "}
-            <Link
-              className="getStarted_text"
-              variant="subtitle2"
-              color="secondary.darker"
-              component={RouterLink}
-              to="/register"
-            >
-              Get started
-            </Link>
-          </Alert>
-          <FTextField name="email" label="Email address" />
-          <FTextField
-            name="password"
-            label="Password"
-            type={showPassword ? "text" : "password"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment>
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={() => setShowPassword(!showPassword)}
-                    onMouseDown={(e) => e.preventDefault()}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-        </Stack>
+    <div className="login_container">
+      <div className="title">
+        <LogoBasic />
+        <Typography variant="h4" sx={{ mt: "24px", fontSize: "36px" }}>
+          Sign in
+        </Typography>
+        <Typography variant="h5" sx={{ mt: "10px", fontSize: "1rem" }}>
+          to continue to DIY
+        </Typography>
+      </div>
+      <div className="form">
+        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+          <Stack spacing={3}>
+            {!!errors.responseError && (
+              <Alert severity="error">{errors.responseError.message}</Alert>
+            )}
+            <Alert severity="info">
+              Don't have an account?{" "}
+              <Link
+                className="getStarted_text"
+                variant="subtitle2"
+                style={{ color: PRIMARY }}
+                component={RouterLink}
+                to="/register"
+              >
+                Get started
+              </Link>
+            </Alert>
+            <FTextField name="email" label="Email address" />
+            <FTextField
+              name="password"
+              label="Password"
+              type={showPassword ? "text" : "password"}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment>
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={() => setShowPassword(!showPassword)}
+                      onMouseDown={(e) => e.preventDefault()}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Stack>
 
-        <Stack
-          direction="row"
-          sx={{ my: 2 }}
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <FCheckbox name="remember" label="Remember me" />
-
-          <Link
-            className="forgot_text"
-            component={RouterLink}
-            variant="subtitle2"
-            to="/"
+          <Stack
+            direction="row"
+            sx={{ my: 2 }}
+            alignItems="center"
+            justifyContent="space-between"
+            flexWrap="wrap"
           >
-            Forgot password?
-          </Link>
-        </Stack>
+            <FCheckbox name="remember" label="Remember me" />
 
-        <LoadingButton
-          className="login_btn"
-          fullWidth
-          size="large"
-          type="submit"
-          variant="contained"
-          sx={{ fontWeight: 700 }}
-          loading={isSubmitting}
-        >
-          Login
-        </LoadingButton>
-      </FormProvider>
-    </Container>
+            <Link
+              className="forgot_text"
+              component={RouterLink}
+              variant="subtitle2"
+              style={{ color: PRIMARY }}
+              to="/"
+            >
+              Forgot password?
+            </Link>
+          </Stack>
+
+          <LoadingButton
+            className="login_btn"
+            fullWidth
+            size="large"
+            type="submit"
+            variant="contained"
+            sx={{ fontWeight: 700 }}
+            loading={isSubmitting}
+          >
+            Login
+          </LoadingButton>
+        </FormProvider>
+      </div>
+    </div>
   );
 }
 

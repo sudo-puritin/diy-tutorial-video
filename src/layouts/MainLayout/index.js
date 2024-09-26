@@ -6,10 +6,11 @@ import MainFooter from "../MainFooter";
 
 import { Box, Stack } from "@mui/material";
 
-import "./index.scss";
+import "./MainLayout.scss";
 
 function MainLayout() {
   const location = useLocation();
+
   return (
     <Stack sx={{ minHeight: "100vh" }}>
       <MainHeader />

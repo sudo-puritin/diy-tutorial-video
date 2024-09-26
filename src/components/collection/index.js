@@ -6,6 +6,7 @@ import "swiper/css";
 import CollectionCard from "./collectionCard";
 
 import { Typography } from "@mui/material";
+import { COLLECTION_LIST } from "../../constants/hompage.constants";
 
 function collectionList() {
   return (
@@ -19,31 +20,17 @@ function collectionList() {
           fontFamily: "sans-serif",
           fontWeight: 700,
           fontSize: "1.4rem",
-          color: "#3B3B3B",
           textDecoration: "none",
         }}
       >
         Collection
       </Typography>
       <Swiper grabCursor={true} spaceBetween={24} slidesPerView={"auto"}>
-        <SwiperSlide style={{ width: 240 }}>
-          <CollectionCard />
-        </SwiperSlide>
-        <SwiperSlide style={{ width: 240 }}>
-          <CollectionCard />
-        </SwiperSlide>
-        <SwiperSlide style={{ width: 240 }}>
-          <CollectionCard />
-        </SwiperSlide>
-        <SwiperSlide style={{ width: 240 }}>
-          <CollectionCard />
-        </SwiperSlide>
-        <SwiperSlide style={{ width: 240 }}>
-          <CollectionCard />
-        </SwiperSlide>
-        <SwiperSlide style={{ width: 240 }}>
-          <CollectionCard />
-        </SwiperSlide>
+        {COLLECTION_LIST.map((col) => (
+          <SwiperSlide key={col.value}>
+            <CollectionCard data={col} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

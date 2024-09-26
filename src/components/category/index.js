@@ -5,6 +5,7 @@ import { Typography } from "@mui/material";
 
 import "./categoryList.scss";
 import CategoryCard from "./categoryCard";
+import { CATEGORY_LIST } from "../../constants/hompage.constants";
 
 function CategoryList() {
   return (
@@ -15,34 +16,19 @@ function CategoryList() {
         sx={{
           mr: 2,
           mb: 2,
-          fontFamily: "sans-serif",
           fontWeight: 700,
           fontSize: "1.4rem",
-          color: "#3B3B3B",
           textDecoration: "none",
         }}
       >
         Category
       </Typography>
       <Swiper grabCursor={true} spaceBetween={24} slidesPerView={"auto"}>
-        <SwiperSlide>
-          <CategoryCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CategoryCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CategoryCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CategoryCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CategoryCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CategoryCard />
-        </SwiperSlide>
+        {CATEGORY_LIST.map((cate) => (
+          <SwiperSlide key={cate.value}>
+            <CategoryCard data={cate} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

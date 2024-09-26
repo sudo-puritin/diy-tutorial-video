@@ -1,0 +1,16 @@
+.setting_container {
+  max-width: 876px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 10px;
+  .settingName_box,
+  .settingDescription_box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .publish_btn {
+    margin-top: 20px;
+  }
+}

@@ -1,16 +1,22 @@
-import { Box, Stack } from "@mui/material";
 import React from "react";
-import LogoBasic from "../../components/LogoBasic";
 import { Outlet } from "react-router-dom";
+import { WARNING } from "../../themes";
+
+import "./BlankLayout.scss";
 
 function BlankLayout() {
   return (
-    <div className="layout_container">
-      <Stack minHeight="100vh" justifyContent="center" alignItems="center">
-        <LogoBasic />
-        <Box mb={2} />
-        <Outlet />
-      </Stack>
+    <div
+      style={{
+        background: WARNING.light,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        padding: "10px",
+      }}
+    >
+      <Outlet />
     </div>
   );
 }

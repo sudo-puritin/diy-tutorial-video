@@ -77,7 +77,7 @@ function SearchTable() {
                 <Grid className="grid_box" size={4}>
                   <FSelect name="duration" label="Duration">
                     {DURATION_OPTION.map((option) => (
-                      <option key={option.code} value={option.label}>
+                      <option key={option.value} value={option.label}>
                         {option.label}
                       </option>
                     ))}
@@ -86,7 +86,7 @@ function SearchTable() {
                 <Grid className="grid_box" size={4}>
                   <FSelect name="difficulty" label="Difficulty">
                     {DIFFICULTY_OPTION.map((option) => (
-                      <option key={option.code} value={option.label}>
+                      <option key={option.value} value={option.label}>
                         {option.label}
                       </option>
                     ))}
@@ -95,7 +95,7 @@ function SearchTable() {
                 <Grid className="grid_box" size={4}>
                   <FSelect name="category" label="Category">
                     {CATEGORY_OPTION.map((option) => (
-                      <option key={option.code} value={option.label}>
+                      <option key={option.value} value={option.label}>
                         {option.label}
                       </option>
                     ))}
@@ -104,7 +104,7 @@ function SearchTable() {
                 <Grid className="grid_box" size={4}>
                   <FSelect name="material" label="Material">
                     {MATERIAL_OPTION.map((option) => (
-                      <option key={option.code} value={option.label}>
+                      <option key={option.value} value={option.label}>
                         {option.label}
                       </option>
                     ))}
@@ -113,7 +113,7 @@ function SearchTable() {
                 <Grid className="grid_box" size={4}>
                   <FSelect name="tools" label="Tools">
                     {TOOLS_OPTION.map((option) => (
-                      <option key={option.code} value={option.label}>
+                      <option key={option.value} value={option.label}>
                         {option.label}
                       </option>
                     ))}

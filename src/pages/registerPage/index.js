@@ -5,18 +5,19 @@ import * as Yup from "yup";
 import { Link, Link as RouterLink } from "react-router-dom";
 
 import { FormProvider, FTextField } from "../../components/form";
+import LogoBasic from "../../components/LogoBasic";
 
 import {
   Alert,
-  Container,
   IconButton,
   InputAdornment,
   Stack,
+  Typography,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
-import "./index.scss";
+import "./RegisterPage.scss";
 
 const RegisterSchema = Yup.object().shape({
   firstName: Yup.string().required("First name is required"),
@@ -58,77 +59,88 @@ function RegisterPage() {
   };
 
   return (
-    <Container maxWidth="xs">
-      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={3}>
-          {!!errors.responseError && (
-            <Alert severity="error">{errors.responseError.message}</Alert>
-          )}
-          <Alert severity="info">
-            Already have an account?{" "}
-            <Link variant="subtitle2" component={RouterLink} to="/login">
-              Sign in
-            </Link>
-          </Alert>
+    <div className="register_container">
+      <div className="title">
+        <LogoBasic />
+        <Typography variant="h4" sx={{ mt: "24px", fontSize: "36px" }}>
+          Register
+        </Typography>
+        <Typography variant="h5" sx={{ mt: "10px", fontSize: "1rem" }}>
+          to become a member of DIY
+        </Typography>
+      </div>
+      <div className="form">
+        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+          <Stack spacing={3}>
+            {!!errors.responseError && (
+              <Alert severity="error">{errors.responseError.message}</Alert>
+            )}
+            <Alert severity="info">
+              Already have an account?{" "}
+              <Link variant="subtitle2" component={RouterLink} to="/login">
+                Sign in
+              </Link>
+            </Alert>
 
-          <FTextField name="firstName" label="First name" />
-          <FTextField name="lastName" label="Last name" />
-          <FTextField name="email" label="Email address" />
-          <FTextField
-            name="password"
-            label="Password"
-            type={showPassword ? "text" : "password"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment>
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={() => setShowPassword(!showPassword)}
-                    onMouseDown={(e) => e.preventDefault()}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-          <FTextField
-            name="passwordConfirmation"
-            label="Password Confirmation"
-            type={showPasswordConfirmation ? "text" : "password"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment>
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={() =>
-                      setShowPasswordConfirmation(!showPasswordConfirmation)
-                    }
-                    onMouseDown={(e) => e.preventDefault()}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
+            <FTextField name="firstName" label="First name" />
+            <FTextField name="lastName" label="Last name" />
+            <FTextField name="email" label="Email address" />
+            <FTextField
+              name="password"
+              label="Password"
+              type={showPassword ? "text" : "password"}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment>
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={() => setShowPassword(!showPassword)}
+                      onMouseDown={(e) => e.preventDefault()}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <FTextField
+              name="passwordConfirmation"
+              label="Password Confirmation"
+              type={showPasswordConfirmation ? "text" : "password"}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment>
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={() =>
+                        setShowPasswordConfirmation(!showPasswordConfirmation)
+                      }
+                      onMouseDown={(e) => e.preventDefault()}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
 
-          <LoadingButton
-            className="register_btn"
-            fullWidth
-            size="large"
-            type="submit"
-            variant="contained"
-            loading={isSubmitting}
-            sx={{ fontWeight: 700 }}
-          >
-            Register
-          </LoadingButton>
-        </Stack>
-      </FormProvider>
-    </Container>
+            <LoadingButton
+              className="register_btn"
+              fullWidth
+              size="large"
+              type="submit"
+              variant="contained"
+              loading={isSubmitting}
+              sx={{ fontWeight: 700 }}
+            >
+              Register
+            </LoadingButton>
+          </Stack>
+        </FormProvider>
+      </div>
+    </div>
   );
 }
 

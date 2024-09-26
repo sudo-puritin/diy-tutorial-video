@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import { AppBar, Typography } from "@mui/material";
 
+import "./MainHeader.scss";
+
 function MainHeader() {
   return (
     <AppBar
@@ -13,26 +15,8 @@ function MainHeader() {
         backgroundColor: "#3F5B5C",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          paddingLeft: 20,
-          paddingRight: 20,
-          justifyContent: "space-between",
-          gap: 50,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            maxWidth: 500,
-            width: "100%",
-            gap: 24,
-          }}
-        >
+      <div className="appBar_box">
+        <div className="appBar_info">
           <Link to="/">
             <img
               src="../images/logoLight.png"
@@ -44,6 +28,7 @@ function MainHeader() {
 
           <div
             style={{
+              paddingLeft: "170px",
               display: "flex",
               gap: "40px",
             }}

@@ -9,11 +9,11 @@ import {
   Typography,
 } from "@mui/material";
 
-import "./index.scss";
+import "./Card.scss";
 
-function FCard() {
+function FCard({ other }) {
   return (
-    <div className="card_container">
+    <div className="card_container" {...other}>
       <Card sx={{ borderRadius: "0px !important" }}>
         <CardActionArea>
           <CardMedia

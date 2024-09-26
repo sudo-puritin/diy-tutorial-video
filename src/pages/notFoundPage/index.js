@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { Box, Button, Typography, Container } from "@mui/material";
-import "./index.scss";
+import "./NotFoundPage.scss";
 
 function NotFoundPage() {
   return (

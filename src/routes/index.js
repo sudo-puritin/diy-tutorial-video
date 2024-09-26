@@ -11,7 +11,10 @@ import SearchPage from "../pages/searchPage";
 import NotFoundPage from "../pages/notFoundPage";
 import RegisterPage from "../pages/registerPage";
 import LoginPage from "../pages/loginPage";
-import VideoDetail from "../pages/VideoDetail";
+import VideoDetail from "../pages/videoDetailPage";
+import UserPage from "../pages/userPage";
+import MyVideoPage from "../pages/userPage/MyVideoPage";
+import SettingPage from "../pages/userPage/SettingPage";
 
 function Router() {
   return (
@@ -22,6 +25,10 @@ function Router() {
         <Route path="category" element={<CategoryPage />} />
         <Route path="collection" element={<CollectionPage />} />
         <Route path="detail" element={<VideoDetail />} />
+        <Route path="user" element={<UserPage />}>
+          <Route index element={<MyVideoPage />} />
+          <Route path="setting" element={<SettingPage />} />
+        </Route>
       </Route>
 
       <Route element={<BlankLayout />}>

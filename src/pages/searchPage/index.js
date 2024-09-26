@@ -7,7 +7,7 @@ import { Pagination, PaginationItem, Stack, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-import "./index.scss";
+import "./SearchPage.scss";
 
 function SearchPage() {
   return (

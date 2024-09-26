@@ -10,25 +10,24 @@ import {
   Typography,
 } from "@mui/material";
 
-function CollectionCard() {
+function CollectionCard({ data }) {
   return (
     <Box>
-      <Card>
+      <Card sx={{ borderRadius: 0, boxShadow: "none" }}>
         <CardActionArea>
           <CardMedia
             component="img"
-            width="240px"
-            image="/images/art2.png"
-            alt="green iguana"
-            style={{ borderRadius: "50%" }}
+            image={data.image_link}
+            alt={data.value}
+            sx={{ borderRadius: "50%", height: "225px" }}
           />
-          <CardContent>
+          <CardContent sx={{ p: "5px" }}>
             <Typography
               variant="h6"
               component="div"
-              style={{ height: "35px", textAlign: "center", fontWeight: 700 }}
+              sx={{ textAlign: "center", fontWeight: 700, fontSize: "1rem" }}
             >
-              ART
+              {data.label}
             </Typography>
           </CardContent>
         </CardActionArea>
