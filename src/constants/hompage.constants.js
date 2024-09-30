@@ -62,40 +62,40 @@ export const TOOLS_OPTION = [
 ];
 
 export const CATEGORY_LIST = [
-  { value: "art", label: "ART", image_link: "/images/categoryImages/art.png" },
+  { value: "art", label: "art", image_link: "/images/categoryImages/art.png" },
   {
     value: "clothes",
-    label: "CLOTHES",
+    label: "clothes",
     image_link: "/images/categoryImages/clothes.png",
   },
   {
     value: "clothesAccessories",
-    label: "CLOTHES ACCESSORIES",
+    label: "clothes accessories",
     image_link: "/images/categoryImages/clothesAccessories.png",
   },
   {
     value: "furniture",
-    label: "FURNITURE",
+    label: "furniture",
     image_link: "/images/categoryImages/furniture.png",
   },
   {
     value: "home",
-    label: "HOME DECORATION",
+    label: "home decoration",
     image_link: "/images/categoryImages/houseDecoration.png",
   },
   {
     value: "jewelry",
-    label: "JEWELRY",
+    label: "jewelry",
     image_link: "/images/categoryImages/jewelry.png",
   },
   {
     value: "kid",
-    label: "KID TOYS",
+    label: "kid toys",
     image_link: "/images/categoryImages/kidToys.png",
   },
   {
     value: "pottery",
-    label: "POTTERY",
+    label: "pottery",
     image_link: "/images/categoryImages/pottery.png",
   },
 ];
@@ -103,42 +103,42 @@ export const CATEGORY_LIST = [
 export const COLLECTION_LIST = [
   {
     value: "christmas",
-    label: "CHRISTMAS DECORATION",
+    label: "christmas decoration",
     image_link: "/images/collectionImages/christmas.png",
   },
   {
     value: "soap",
-    label: "NATURAL SOAP",
+    label: "natural soap",
     image_link: "/images/collectionImages/soap.png",
   },
   {
     value: "earings",
-    label: "EARINGS",
+    label: "earings",
     image_link: "/images/collectionImages/earings.png",
   },
   {
     value: "vases",
-    label: "VASES",
+    label: "vases",
     image_link: "/images/collectionImages/vases.png",
   },
   {
     value: "candle",
-    label: "CANDLES",
+    label: "candle",
     image_link: "/images/collectionImages/candle.png",
   },
   {
     value: "art",
-    label: "ART",
+    label: "art",
     image_link: "/images/collectionImages/art.png",
   },
   {
     value: "necklace",
-    label: "NECKLACE",
+    label: "necklace",
     image_link: "/images/collectionImages/necklace.png",
   },
   {
     value: "chairs",
-    label: "CHAIRS",
+    label: "chairs",
     image_link: "/images/collectionImages/rusticShelves.png",
   },
 ];

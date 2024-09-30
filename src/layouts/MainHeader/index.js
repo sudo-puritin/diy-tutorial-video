@@ -6,6 +6,8 @@ import { AppBar, Typography } from "@mui/material";
 
 import "./MainHeader.scss";
 
+import AvatarBox from "./AvatarBox";
+
 function MainHeader() {
   return (
     <AppBar
@@ -53,7 +55,6 @@ function MainHeader() {
             <Link to="/collection" style={{ textDecoration: "none" }}>
               <Typography
                 variant="h6"
-                noWrap
                 sx={{
                   fontFamily: "sans-serif",
                   fontWeight: 400,
@@ -69,23 +70,7 @@ function MainHeader() {
             </Link>
           </div>
         </div>
-
-        <Link to="/login" style={{ textDecoration: "none" }}>
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              fontFamily: "sans-serif",
-              fontWeight: 400,
-              fontSize: "1.2rem",
-              lineHeight: "32px",
-              color: "#C5B38C",
-              textDecoration: "none",
-            }}
-          >
-            Sign in
-          </Typography>
-        </Link>
+        <AvatarBox />
       </div>
     </AppBar>
   );

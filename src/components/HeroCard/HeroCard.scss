@@ -1,0 +1,16 @@
+.myVideoInfo_box {
+  width: 100%;
+  height: 24px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    font-style: italic;
+  }
+}
+
+.actionVideo_btn {
+  display: flex;
+  justify-content: flex-end;
+}

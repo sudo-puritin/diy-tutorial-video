@@ -1,0 +1,15 @@
+.leftSideVideoPage_container {
+  max-width: calc((100vh - 56px - 24px - 136px) * (16 / 9));
+  min-width: calc((480px * (16 / 9)));
+  border: 1px solid black;
+  .player_box {
+    height: 720px;
+    border: 1px solid red;
+  }
+  .below_player_box {
+    height: 194px; //test
+    margin-top: 12px;
+    margin-bottom: 24px;
+    border: 1px solid yellow;
+  }
+}

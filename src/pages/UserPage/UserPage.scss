@@ -1,0 +1,51 @@
+.userPage_container {
+  display: flex;
+  gap: 20px;
+}
+
+.leftSide_container {
+  width: 30%;
+  height: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  .avatar_box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .photoIcon_box {
+      position: absolute;
+      visibility: hidden;
+    }
+    &:hover {
+      filter: brightness(50%);
+      .photoIcon_box {
+        visibility: visible;
+      }
+    }
+  }
+
+  .option_box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .option_btn {
+      width: 100%;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.rightSide_container {
+  width: 70%;
+}

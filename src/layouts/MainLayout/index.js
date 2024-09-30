@@ -16,7 +16,7 @@ function MainLayout() {
       <MainHeader />
       <div
         className="layout_container"
-        style={{ padding: location.pathname === "/" ? "" : "16px 150px" }}
+        style={{ padding: location.pathname === "/" ? "" : "24px 150px" }}
       >
         <Outlet />
       </div>
