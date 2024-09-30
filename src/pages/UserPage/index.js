@@ -10,6 +10,7 @@ import { TabContext, TabList } from "@mui/lab";
 import { styled } from "@mui/material/styles";
 
 import useAuth from "../../hooks/useAuth";
+import { cloudinaryUpload } from "../../ultis/cloudinary";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -27,12 +28,17 @@ function UserPage() {
   const [value, setValue] = useState("1");
 
   const { user } = useAuth();
-  console.log("🚀 Puritin ~ UserPage ~ user:", user);
 
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleChangeAvatar = async (image) => {
+    console.log("🚀 Puritin ~ handleChangeAvatar ~ image:", image);
+    const imageUrl = await cloudinaryUpload(image);
+    console.log("🚀 Puritin ~ handleChangeAvatar ~ imageUrl:", imageUrl);
   };
 
   return (
@@ -50,9 +56,7 @@ function UserPage() {
               </div>
               <VisuallyHiddenInput
                 type="file"
-                onChange={(event) =>
-                  console.log("file upload", event.target.files)
-                }
+                onChange={(event) => handleChangeAvatar(event.target.files)}
                 multiple
               />
             </Button>

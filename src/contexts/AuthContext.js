@@ -51,12 +51,10 @@ const reducer = (state, action) => {
 const AuthContext = createContext({ ...initialState });
 
 const setSession = (accessToken, remember) => {
-  console.log("🚀 Puritin ~ setSession ~ remember:", remember);
-  console.log("🚀 Puritin ~ setSession ~ accessToken:", accessToken);
-  if (accessToken && remember === true) {
+  if (accessToken && !!remember) {
     window.localStorage.setItem("accessToken", accessToken);
     apiService.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-  } else if (accessToken && remember === false) {
+  } else if (accessToken && !remember) {
     window.localStorage.removeItem("accessToken");
     window.sessionStorage.setItem("accessToken", accessToken);
     apiService.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
@@ -119,7 +117,6 @@ function AuthProvider({ children }) {
         const sessionToken = window.sessionStorage.getItem("accessToken");
         const accessToken = storageToken || sessionToken;
         const remember = !!storageToken;
-        console.log("🚀 Puritin ~ initialize ~ remember:", remember);
 
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken, remember);

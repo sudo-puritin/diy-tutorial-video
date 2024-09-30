@@ -81,7 +81,6 @@ function RegisterPage() {
       toast.error(error.message);
     }
     //trim data first name, lastname and email
-    console.log("Register", data);
   };
 
   return (

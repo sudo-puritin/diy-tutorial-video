@@ -11,16 +11,16 @@ function AuthRequire({ children }) {
 
   const location = useLocation();
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
-
   if (!isInitialized) {
     return (
       <div>
         <LoadingScreen />
       </div>
     );
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   return children;
