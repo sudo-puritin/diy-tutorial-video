@@ -93,8 +93,9 @@ function AvatarBox() {
       {isAuthenticated ? (
         <div>
           <Avatar
-            {...stringAvatar(`${user.lastName}${" "}${user.firstName}`)}
+            {...stringAvatar(`${user.firstName}${" "}${user.lastName}`)}
             onClick={handleProfileMenuOpen}
+            src={user.avatar}
             sx={{ cursor: "pointer" }}
           />
           {renderMenu}

@@ -1,0 +1,20 @@
+.avatar_box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .photoIcon_box {
+    position: absolute;
+    visibility: hidden;
+  }
+  &:hover {
+    filter: brightness(50%);
+    .photoIcon_box {
+      top: 40%;
+      left: 38%;
+      visibility: visible;
+    }
+  }
+}

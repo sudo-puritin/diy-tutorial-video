@@ -11,38 +11,19 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+}
 
-  .avatar_box {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.option_box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 
-    .photoIcon_box {
-      position: absolute;
-      visibility: hidden;
-    }
-    &:hover {
-      filter: brightness(50%);
-      .photoIcon_box {
-        visibility: visible;
-      }
-    }
-  }
-
-  .option_box {
+  .option_btn {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-
-    .option_btn {
-      width: 100%;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: capitalize;
-    }
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: capitalize;
   }
 }
 

@@ -1,5 +1,5 @@
 export const DURATION_OPTION = [
-  { value: "none", label: "None" },
+  { value: "", label: "None" },
   { value: "2h", label: "< 2 Hour" },
   { value: "4h", label: "2 - 4 Hours" },
   { value: "8h", label: "4 - 8 Hours" },
@@ -10,14 +10,14 @@ export const DURATION_OPTION = [
 ];
 
 export const DIFFICULTY_OPTION = [
-  { value: "none", label: "None" },
+  { value: "", label: "None" },
   { value: "easy", label: "Easy" },
   { value: "medium", label: "Medium" },
   { value: "hard", label: "Hard" },
 ];
 
 export const CATEGORY_OPTION = [
-  { value: "none", label: "None" },
+  { value: "", label: "None" },
   { value: "art", label: "Art" },
   { value: "clothes", label: "Clothes" },
   {
@@ -31,8 +31,44 @@ export const CATEGORY_OPTION = [
   { value: "pottery", label: "Pottery" },
 ];
 
+export const COLLECTION_OPTION = [
+  { value: "", label: "None" },
+  {
+    value: "christmas",
+    label: "Christmas Decoration",
+  },
+  {
+    value: "soap",
+    label: "Natural Soap",
+  },
+  {
+    value: "earings",
+    label: "Earings",
+  },
+  {
+    value: "vases",
+    label: "Vases",
+  },
+  {
+    value: "candle",
+    label: "Candle",
+  },
+  {
+    value: "art",
+    label: "Art",
+  },
+  {
+    value: "necklace",
+    label: "Necklace",
+  },
+  {
+    value: "chairs",
+    label: "Chairs",
+  },
+];
+
 export const MATERIAL_OPTION = [
-  { value: "none", label: "None" },
+  { value: "", label: "None" },
   { value: "adhesive", label: "Adhesive" },
   { value: "brick", label: "Brick" },
   { value: "glass", label: "Glass" },
@@ -47,7 +83,7 @@ export const MATERIAL_OPTION = [
 ];
 
 export const TOOLS_OPTION = [
-  { value: "none", label: "None" },
+  { value: "", label: "None" },
   { value: "drill", label: "Drill" },
   { value: "hammer", label: "Hammer" },
   { value: "saw", label: "Saw" },

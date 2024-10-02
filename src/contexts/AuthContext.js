@@ -3,6 +3,7 @@ import apiService from "../app/apiService";
 // import isValidToken from "../utils/jwt";
 import { API } from "../constants/API.constants";
 import isValidToken from "../ultis/jwt";
+import { useSelector } from "react-redux";
 
 const initialState = {
   isInitialized: false,
@@ -14,6 +15,7 @@ const INITIALIZE = "AUTH.INITIALIZE";
 const LOGIN_SUCCESS = "AUTH.LOGIN_SUCCESS";
 const REGISTER_SUCCESS = "AUTH.REGISTER_SUCCESS";
 const LOGOUT = "AUTH.LOGOUT";
+const UPDATE_SUCCESS = "AUTH.UPDATE_SUCCESS";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -43,6 +45,11 @@ const reducer = (state, action) => {
         isAuthenticated: false,
         user: null,
       };
+    case UPDATE_SUCCESS:
+      return {
+        ...state,
+        user: action.payload.user,
+      };
     default:
       return state;
   }
@@ -68,9 +75,11 @@ const setSession = (accessToken, remember) => {
 function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const { updateUserInfo } = useSelector((state) => state.user);
+
   const login = async ({ email, password, remember }, callback) => {
     const response = await apiService.post(API.LOGIN, { email, password });
-    const { user, accessToken } = response.data.data;
+    const { user, accessToken } = response.data;
 
     setSession(accessToken, remember);
 
@@ -146,6 +155,17 @@ function AuthProvider({ children }) {
     };
     initialize();
   }, []);
+
+  useEffect(() => {
+    if (updateUserInfo) {
+      console.log("🚀 Puritin ~ useEffect ~ updateUserInfo:", updateUserInfo);
+
+      dispatch({
+        type: UPDATE_SUCCESS,
+        payload: { user: updateUserInfo },
+      });
+    }
+  }, [updateUserInfo]);
 
   return (
     <AuthContext.Provider value={{ ...state, login, register, logout }}>

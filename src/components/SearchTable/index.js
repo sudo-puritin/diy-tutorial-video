@@ -39,14 +39,10 @@ function SearchTable() {
 
   const {
     handleSubmit,
-    reset,
-    setError,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = methods;
 
   const navigate = useNavigate();
-
-  const location = useLocation();
 
   const onSubmit = async (data) => {
     console.log("Submitted Data", data);
@@ -74,6 +70,7 @@ function SearchTable() {
                 <Grid className="grid_box" size={4}>
                   <FTextField name="videoTitle" label="Video Title" />
                 </Grid>
+
                 <Grid className="grid_box" size={4}>
                   <FSelect name="duration" label="Duration">
                     {DURATION_OPTION.map((option) => (
@@ -83,6 +80,7 @@ function SearchTable() {
                     ))}
                   </FSelect>
                 </Grid>
+
                 <Grid className="grid_box" size={4}>
                   <FSelect name="difficulty" label="Difficulty">
                     {DIFFICULTY_OPTION.map((option) => (
@@ -92,6 +90,7 @@ function SearchTable() {
                     ))}
                   </FSelect>
                 </Grid>
+
                 <Grid className="grid_box" size={4}>
                   <FSelect name="category" label="Category">
                     {CATEGORY_OPTION.map((option) => (
@@ -101,6 +100,7 @@ function SearchTable() {
                     ))}
                   </FSelect>
                 </Grid>
+
                 <Grid className="grid_box" size={4}>
                   <FSelect name="material" label="Material">
                     {MATERIAL_OPTION.map((option) => (
@@ -110,6 +110,7 @@ function SearchTable() {
                     ))}
                   </FSelect>
                 </Grid>
+
                 <Grid className="grid_box" size={4}>
                   <FSelect name="tools" label="Tools">
                     {TOOLS_OPTION.map((option) => (
@@ -119,6 +120,7 @@ function SearchTable() {
                     ))}
                   </FSelect>
                 </Grid>
+
                 <Grid className="grid_box" size={4}>
                   <LoadingButton
                     className="resultBtn"

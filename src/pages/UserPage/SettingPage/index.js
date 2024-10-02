@@ -1,32 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SettingPage.scss";
 
 import { Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
+
 import { LoadingButton } from "@mui/lab";
-
 import { FormProvider, FTextField } from "../../../components/Form";
-
-const initialValue = {
-  firstName: "",
-  lastName: "",
-  description: "",
-};
+import { updateUserInfo } from "../../../features/User/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function SettingPage() {
-  const methods = useForm({ initialValue });
+  const { user } = useAuth();
+
+  const { isLoading } = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+
+  const defaultValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    bio: "",
+    ...user,
+  };
+  // console.log("🚀 Puritin ~ SettingPage ~ initialValue:", initialValue);
+
+  const methods = useForm({ defaultValues });
 
   const {
     handleSubmit,
-    reset,
-    setError,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = methods;
 
   const onSubmit = async (data) => {
-    let { firstName, lastName, description } = data;
-    console.log("submit", data);
+    dispatch(updateUserInfo({ userId: user._id, data: { ...data } }));
   };
+  useEffect(() => {});
+
   return (
     <>
       <Typography variant="h6" sx={{ fontWeight: 700 }}>
@@ -42,18 +53,32 @@ function SettingPage() {
             <Typography variant="h7">
               Choose a profile name that represents you and your content.
             </Typography>
-            <FTextField name="firstName" label="First Name" />
-            <FTextField name="lastName" label="Last Name" />
+            <FTextField name="firstName" label="First Name" required />
+            <FTextField name="lastName" label="Last Name" required />
+          </div>
+
+          <div className="settingEmail_box">
+            <Typography variant="h7" sx={{ fontWeight: 700 }}>
+              Email
+            </Typography>
+            <FTextField
+              name="email"
+              slotProps={{
+                input: {
+                  readOnly: true,
+                },
+              }}
+            />
           </div>
 
           <div className="settingDescription_box">
             <Typography variant="h7" sx={{ fontWeight: 700 }}>
-              Description
+              Bio
             </Typography>
 
             <FTextField
               name="description"
-              placeholder={"Tell viewers about yourself."}
+              placeholder={"Tell viewers about yourself"}
               multiline
               rows={4}
             />
@@ -69,9 +94,10 @@ function SettingPage() {
               type="submit"
               variant="contained"
               sx={{ fontWeight: 700, maxWidth: "150px" }}
-              loading={isSubmitting}
+              loading={isSubmitting || isLoading}
+              disabled={!isDirty}
             >
-              Publish
+              Update
             </LoadingButton>
           </div>
         </div>
