@@ -8,7 +8,6 @@ const CreatingVideoPage = () => {
     <div>
       <h3>Upload videos</h3>
       <hr />
-
       <UploadVideo />
     </div>
   );

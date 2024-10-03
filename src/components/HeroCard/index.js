@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./HeroCard.scss";
+
 import {
   Box,
   Button,
@@ -8,10 +9,14 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import PATH_NAME from "../../constants/pathName.constants";
 
-function HeroCard() {
+import { useNavigate } from "react-router-dom";
+
+import PATH_NAME from "../../constants/pathName.constants";
+import useAuth from "../../hooks/useAuth";
+import DisplayVideo from "../DisplayVideo";
+
+function HeroCard({ video }) {
   const [showActionButton, setShowActionButton] = useState(false);
 
   const navigate = useNavigate();
@@ -28,14 +33,8 @@ function HeroCard() {
         boxShadow: "none",
       }}
     >
-      <div>
-        <CardMedia
-          height={"100%"}
-          component="img"
-          alt="tester"
-          image="/images/art1.png"
-          sx={{ maxWidth: "826px" }}
-        />
+      <div style={{ width: "100%", marginTop: "20px" }}>
+        <DisplayVideo videoSrc={video.videoUrl} />
       </div>
 
       <div
@@ -48,27 +47,32 @@ function HeroCard() {
         <CardContent height={"100%"} sx={{ p: 0 }}>
           <Box mb={2}>
             <Typography variant="h5" sx={{ fontWeight: 700 }}>
-              Two doors from heaven
+              {video.title}
             </Typography>
-            <Typography variant="h6">Thinh Nguyen Duc</Typography>
+            <Typography variant="h6">
+              {video.userName.firstName} {video.userName.lastName}
+            </Typography>
           </Box>
-
           <Box>
             <Box className="myVideoInfo_box">
               <h4>Material</h4>
-              <p>Wood</p>
+              {video.material.map((mat) => (
+                <p>{mat}</p>
+              ))}
             </Box>
             <Box className="myVideoInfo_box">
               <h4>Tool</h4>
-              <p>Hammer</p>
+              {video.tool.map((tol) => (
+                <p>{tol}</p>
+              ))}
             </Box>
             <Box className="myVideoInfo_box">
               <h4>Difficulty</h4>
-              <p>Medium</p>
+              <p>{video.difficulty}</p>
             </Box>
             <Box className="myVideoInfo_box">
               <h4>Duration</h4>
-              <p>2 - 4 hours</p>
+              <p>{video.duration}</p>
             </Box>
           </Box>
         </CardContent>

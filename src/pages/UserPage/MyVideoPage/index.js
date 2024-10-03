@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import "./MyVideoPage.scss";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
-import MyVideoList from "./VideoList";
+import MyVideoList from "../../../features/Video/MyVideoList";
 
 import { Button, Typography } from "@mui/material";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import PATH_NAME from "../../../constants/pathName.constants";
 
 function MyVideoPage() {
+  const { user } = useAuth();
+  console.log("🚀 Puritin ~ MyVideoPage ~ user:", user);
+
   const navigate = useNavigate();
 
   return (
@@ -36,7 +40,7 @@ function MyVideoPage() {
       <hr />
 
       <div className="myList_container">
-        <MyVideoList />
+        <MyVideoList userId={user._id} />
       </div>
     </div>
   );

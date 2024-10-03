@@ -97,6 +97,34 @@ export const TOOLS_OPTION = [
   { value: "sander", label: "Sander" },
 ];
 
+export const MATERIAL_MULTI_OPTION = [
+  { value: "adhesive", label: "Adhesive" },
+  { value: "brick", label: "Brick" },
+  { value: "glass", label: "Glass" },
+  { value: "glitter", label: "Glitter" },
+  { value: "metal", label: "Metal" },
+  { value: "paper", label: "Paper" },
+  { value: "plastic", label: "Plastic" },
+  { value: "porcelain", label: "Porcelain" },
+  { value: "sand", label: "Sand" },
+  { value: "washi", label: "Washi" },
+  { value: "wood", label: "Wood" },
+];
+
+export const TOOLS_MULTI_OPTION = [
+  { value: "drill", label: "Drill" },
+  { value: "hammer", label: "Hammer" },
+  { value: "saw", label: "Saw" },
+  { value: "nail_gun", label: "Nail Gun" },
+  { value: "scissors", label: "Scissors" },
+  { value: "knife", label: "Utility Knife" },
+  { value: "clamp", label: "Clamp" },
+  { value: "screw", label: "Screwdriver" },
+  { value: "plier", label: "Plier" },
+  { value: "tap_measure", label: "Tap Measure" },
+  { value: "sander", label: "Sander" },
+];
+
 export const CATEGORY_LIST = [
   { value: "art", label: "art", image_link: "/images/categoryImages/art.png" },
   {

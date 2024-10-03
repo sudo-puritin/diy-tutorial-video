@@ -23,7 +23,7 @@ import {
   DURATION_OPTION,
   MATERIAL_OPTION,
   TOOLS_OPTION,
-} from "../../constants/hompage.constants";
+} from "../../constants/list.constants";
 
 const defaultValue = {
   videoTitle: "",

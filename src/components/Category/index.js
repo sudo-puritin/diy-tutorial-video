@@ -5,7 +5,7 @@ import { Typography } from "@mui/material";
 
 import "./categoryList.scss";
 import CategoryCard from "./categoryCard";
-import { CATEGORY_LIST } from "../../constants/hompage.constants";
+import { CATEGORY_LIST } from "../../constants/list.constants";
 
 function CategoryList() {
   return (

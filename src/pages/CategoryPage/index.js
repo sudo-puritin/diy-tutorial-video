@@ -7,7 +7,7 @@ import SearchTable from "../../components/SearchTable";
 import HeroCard from "../../components/HeroCard";
 import ResultList from "../../components/ResultList";
 
-import { CATEGORY_LIST } from "../../constants/hompage.constants";
+import { CATEGORY_LIST } from "../../constants/list.constants";
 
 import { Chip, Pagination, PaginationItem, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";

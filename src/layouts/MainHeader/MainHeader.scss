@@ -1,10 +1,13 @@
-.appBar_box {
+.appBar_container {
   padding-right: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  .appBar_info {
+  .appBar_menuIcon {
+    display: none;
+  }
+  .appBar_navigate {
     width: 100%;
     max-width: 500px;
     padding-left: 150px;
@@ -12,5 +15,45 @@
     justify-content: space-between;
     align-items: center;
     gap: 24px;
+
+    .appBar_navigate_list {
+      padding-left: 170px;
+      display: flex;
+      gap: 40px;
+
+      .appBar_navigation_option {
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 32px;
+        letter-spacing: -1;
+        color: #c5b38c;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+          filter: brightness(130%);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .appBar_navigate_list {
+    padding-left: 0px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .appBar_container {
+    padding-right: 32px;
+  }
+  .appBar_menuIcon {
+    display: block !important;
+    position: absolute;
+    left: 32px;
+  }
+  .appBar_navigate_list {
+    display: none !important;
   }
 }

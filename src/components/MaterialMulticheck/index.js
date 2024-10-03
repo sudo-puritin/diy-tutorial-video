@@ -1,13 +1,16 @@
 import * as React from "react";
-import { TOOLS_MULTI_OPTION } from "../../constants/list.constants";
+import {
+  MATERIAL_MULTI_OPTION,
+  MATERIAL_OPTION,
+} from "../../constants/list.constants";
 import { Controller, useFormContext } from "react-hook-form";
-import "./ToolsMultipleSelect.scss";
+import "./MaterialMultipleSelect.scss";
 
 import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 
-const ToolsMultipleSelect = ({ name, field, ...other }) => {
+const MaterialMultipleSelect = ({ name, field, ...other }) => {
   const { control } = useFormContext();
 
   return (
@@ -17,20 +20,20 @@ const ToolsMultipleSelect = ({ name, field, ...other }) => {
       render={({ field, fieldState: { error } }) => (
         <>
           <Select
-            className="toolOption_box"
+            className="materialOption_box"
             {...field}
             multiple
             displayEmpty
             renderValue={
               field.value.length > 0
                 ? undefined
-                : () => <em>Select your tool(s)</em>
+                : () => <em>Select material(s)</em>
             }
             {...other}
           >
-            {TOOLS_MULTI_OPTION.map((tool) => (
-              <MenuItem key={tool.value} value={tool.value}>
-                <ListItemText primary={tool.label} />
+            {MATERIAL_MULTI_OPTION.map((mat) => (
+              <MenuItem key={mat.value} value={mat.value}>
+                <ListItemText primary={mat.label} />
               </MenuItem>
             ))}
           </Select>
@@ -50,4 +53,4 @@ const ToolsMultipleSelect = ({ name, field, ...other }) => {
   );
 };
 
-export default ToolsMultipleSelect;
+export default MaterialMultipleSelect;

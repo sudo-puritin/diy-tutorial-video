@@ -1,0 +1,13 @@
+.materialOption_box {
+  width: 100%;
+  height: 40px;
+  max-width: 875px;
+  .MuiOutlinedInput-input {
+    display: flex !important;
+    gap: 1px;
+    align-items: baseline;
+    .MuiListItemText-root {
+      flex: none;
+    }
+  }
+}

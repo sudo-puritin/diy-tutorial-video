@@ -6,7 +6,7 @@ import "swiper/css";
 import CollectionCard from "./collectionCard";
 
 import { Typography } from "@mui/material";
-import { COLLECTION_LIST } from "../../constants/hompage.constants";
+import { COLLECTION_LIST } from "../../constants/list.constants";
 
 function collectionList() {
   return (
