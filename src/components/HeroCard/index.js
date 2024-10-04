@@ -1,14 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./HeroCard.scss";
 
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +10,7 @@ import useAuth from "../../hooks/useAuth";
 import DisplayVideo from "../DisplayVideo";
 
 function HeroCard({ video }) {
-  const [showActionButton, setShowActionButton] = useState(false);
+  const { isAuthenticated, user } = useAuth();
 
   const navigate = useNavigate();
 
@@ -33,8 +26,8 @@ function HeroCard({ video }) {
         boxShadow: "none",
       }}
     >
-      <div style={{ width: "100%", marginTop: "20px" }}>
-        <DisplayVideo videoSrc={video.videoUrl} />
+      <div style={{ width: "100%", maxWidth: "720px" }}>
+        <DisplayVideo videoSrc={video?.videoUrl} />
       </div>
 
       <div
@@ -47,37 +40,37 @@ function HeroCard({ video }) {
         <CardContent height={"100%"} sx={{ p: 0 }}>
           <Box mb={2}>
             <Typography variant="h5" sx={{ fontWeight: 700 }}>
-              {video.title}
+              {video?.title}
             </Typography>
             <Typography variant="h6">
-              {video.userName.firstName} {video.userName.lastName}
+              {video?.userName.firstName} {video?.userName.lastName}
             </Typography>
           </Box>
           <Box>
             <Box className="myVideoInfo_box">
               <h4>Material</h4>
-              {video.material.map((mat) => (
-                <p>{mat}</p>
+              {video?.material.map((mat, index) => (
+                <p key={index}>{mat}</p>
               ))}
             </Box>
             <Box className="myVideoInfo_box">
               <h4>Tool</h4>
-              {video.tool.map((tol) => (
-                <p>{tol}</p>
+              {video?.tool.map((tol, index) => (
+                <p key={index}>{tol}</p>
               ))}
             </Box>
             <Box className="myVideoInfo_box">
               <h4>Difficulty</h4>
-              <p>{video.difficulty}</p>
+              <p>{video?.difficulty}</p>
             </Box>
             <Box className="myVideoInfo_box">
               <h4>Duration</h4>
-              <p>{video.duration}</p>
+              <p>{video?.duration}</p>
             </Box>
           </Box>
         </CardContent>
 
-        {showActionButton && (
+        {isAuthenticated && user._id === video.user_id && (
           <div className="actionVideo_btn">
             <Button
               size="small"

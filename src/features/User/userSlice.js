@@ -24,6 +24,7 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.updateUserInfo = action.payload;
+      toast.success("Update profile successfully");
     },
   },
 });
@@ -41,7 +42,6 @@ export const updateUserInfo =
         }
       );
       dispatch(slice.actions.updateUserInfoSuccess(response.data));
-      toast.success("Update profile successfully");
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
       toast.error(error.message);

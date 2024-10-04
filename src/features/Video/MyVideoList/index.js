@@ -10,7 +10,6 @@ function MyVideoList({ userId }) {
   const dispatch = useDispatch();
 
   const { videos } = useSelector((state) => state.video);
-  console.log("🚀 Puritin ~ MyVideoList ~ videos:", videos);
 
   useEffect(() => {
     userId && dispatch(getVideo({ userId }));

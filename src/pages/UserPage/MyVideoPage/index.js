@@ -11,7 +11,6 @@ import PATH_NAME from "../../../constants/pathName.constants";
 
 function MyVideoPage() {
   const { user } = useAuth();
-  console.log("🚀 Puritin ~ MyVideoPage ~ user:", user);
 
   const navigate = useNavigate();
 

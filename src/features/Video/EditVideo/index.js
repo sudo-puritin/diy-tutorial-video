@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./UploadVideo..scss";
+import "./EditVideo.scss";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -19,12 +19,12 @@ import { cloudinaryVideoUpload } from "../../../ultis/cloudinary";
 import { useDispatch, useSelector } from "react-redux";
 import ToolsMultipleSelect from "../../../components/ToolsMulticheck";
 import MaterialMultipleSelect from "../../../components/MaterialMulticheck";
-import UploadNewVideo from "./UploadNewVideo";
+import UploadNewVideo from "../UploadVideo/UploadNewVideo";
 import { createVideo } from "../videoSlice";
 import { useNavigate } from "react-router-dom";
 import PATH_NAME from "../../../constants/pathName.constants";
 
-const creatingVideoSchema = Yup.object().shape({
+const editVideoSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
   category: Yup.string().required("Category is required"),
   collection: Yup.string().required("Collection is required"),
@@ -35,7 +35,7 @@ const creatingVideoSchema = Yup.object().shape({
   videoUrl: Yup.string().required("Video is required"),
 });
 
-const UploadVideo = ({ initialData }) => {
+const EditVideo = ({ initialData }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -58,7 +58,7 @@ const UploadVideo = ({ initialData }) => {
   };
 
   const methods = useForm({
-    resolver: yupResolver(creatingVideoSchema),
+    resolver: yupResolver(editVideoSchema),
     defaultValues,
   });
 
@@ -210,4 +210,4 @@ const UploadVideo = ({ initialData }) => {
   );
 };
 
-export default UploadVideo;
+export default EditVideo;
