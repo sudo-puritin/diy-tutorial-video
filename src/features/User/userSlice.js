@@ -8,6 +8,7 @@ const initialState = {
   error: null,
   updateUserInfo: null,
 };
+console.log("🚀 Puritin ~ initialState:", initialState.isLoading);
 
 const slice = createSlice({
   name: "user",

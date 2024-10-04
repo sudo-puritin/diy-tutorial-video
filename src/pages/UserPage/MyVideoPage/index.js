@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MyVideoPage.scss";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
@@ -37,7 +37,6 @@ function MyVideoPage() {
       </div>
 
       <hr />
-
       <div className="myList_container">
         <MyVideoList userId={user._id} />
       </div>

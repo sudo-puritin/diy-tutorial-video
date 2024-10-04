@@ -6,7 +6,9 @@ import { API } from "../../constants/API.constants";
 const initialState = {
   isLoading: false,
   error: null,
+  myVideo: null,
   videos: [],
+  videoDetail: null,
   updateVideoInfo: null,
 };
 
@@ -27,17 +29,28 @@ const slice = createSlice({
       state.createVideo = action.payload;
       toast.success("Create video successfully");
     },
-    getVideoSuccess(state, action) {
+    getMyVideoSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.myVideo = action.payload.videoList;
+    },
+    getVideoListSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
       state.videos = action.payload;
+    },
+    getVideoDetailSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.videoDetail = action.payload;
     },
     updateVideoSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
       state.updateVideoInfo = action.payload;
+      toast.success("Update video successfully");
     },
-    removeVideoSuccess(state, action) {
+    removeVideoSuccess(state) {
       state.isLoading = false;
       state.error = null;
       toast.success("The video has been removed successfully");
@@ -51,7 +64,6 @@ export const createVideo = (data) => async (dispatch) => {
     const response = await apiService.post(`${API.CREATE_VIDEO}`, {
       ...data,
     });
-    console.log("🚀 Puritin ~ response:", response);
 
     dispatch(slice.actions.createVideoSuccess(response.data));
     return { success: true };
@@ -62,14 +74,14 @@ export const createVideo = (data) => async (dispatch) => {
   }
 };
 
-export const getVideo =
+export const getMyVideo =
   ({ userId }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await apiService.get(`${API.CREATE_VIDEO}`);
+      const response = await apiService.get(`${API.GET_MY_VIDEO}/${userId}`);
 
-      dispatch(slice.actions.getVideoSuccess(response.data));
+      dispatch(slice.actions.getMyVideoSuccess(response.data));
 
       return { success: true };
     } catch (error) {
@@ -79,31 +91,65 @@ export const getVideo =
     }
   };
 
-export const updateVideoInfo =
+export const getVideoList = () => async (dispatch) => {
+  dispatch(slice.actions.startLoading());
+  try {
+    const response = await apiService.get(`${API.GET_VIDEO}`);
+
+    dispatch(slice.actions.getVideoListSuccess(response.data));
+
+    return { success: true };
+  } catch (error) {
+    dispatch(slice.actions.hasError(error.message));
+    toast.error(error.message);
+    return { success: false };
+  }
+};
+
+export const getVideoDetail =
   ({ videoId }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await apiService.put(`${API.CREATE_VIDEO}/${videoId}`);
-      dispatch(slice.actions.updateVideoSuccess(response.data));
+      const response = await apiService.get(`${API.UPDATE_VIDEO}/${videoId}`);
+      dispatch(slice.actions.getVideoDetailSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
       toast.error(error.message);
     }
   };
 
-export const deleteVideoInfo =
+export const updateVideoInfo =
   ({ videoId, data }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await apiService.delete(
-        `${API.CREATE_VIDEO}/${videoId}`
-      );
-      dispatch(slice.actions.removeVideoSuccess(response.data));
+      const response = await apiService.put(`${API.UPDATE_VIDEO}/${videoId}`, {
+        ...data,
+      });
+      dispatch(slice.actions.updateVideoSuccess(response.data));
+      return { success: true };
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
       toast.error(error.message);
+      return { success: false };
+    }
+  };
+
+export const deleteVideoInfo =
+  ({ videoId }) =>
+  async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await apiService.delete(
+        `${API.DELETE_VIDEO}/${videoId}`
+      );
+      dispatch(slice.actions.removeVideoSuccess(response.data));
+      return { success: true };
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      toast.error(error.message);
+      return { success: false };
     }
   };
 

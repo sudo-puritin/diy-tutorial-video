@@ -6,14 +6,14 @@ import Router from "./routes";
 
 import ThemeProvider from "./themes";
 import { AuthProvider } from "./contexts/AuthContext";
-import AlertMsg from "./components/AlertMsg";
+import ToastMsg from "./components/ToastMsg";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <ThemeProvider>
-          <AlertMsg />
+          <ToastMsg />
           <Router />
         </ThemeProvider>
       </BrowserRouter>

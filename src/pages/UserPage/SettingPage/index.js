@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./SettingPage.scss";
 
 import { Typography } from "@mui/material";
@@ -13,7 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 function SettingPage() {
   const { user } = useAuth();
 
-  const { isLoading } = useSelector((state) => state.user);
+  const isLoading = useSelector((state) => state.user.isLoading);
+  console.log("🚀 Puritin ~ SettingPage ~ isLoading:", isLoading);
 
   const dispatch = useDispatch();
 
@@ -36,7 +37,6 @@ function SettingPage() {
   const onSubmit = async (data) => {
     dispatch(updateUserInfo({ userId: user._id, data: { ...data } }));
   };
-  useEffect(() => {});
 
   return (
     <>

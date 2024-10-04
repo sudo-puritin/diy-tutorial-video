@@ -7,7 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 
-const ToolsMultipleSelect = ({ name, field, ...other }) => {
+const ToolsMultipleSelect = ({ name, field, isSubmitting, ...other }) => {
   const { control } = useFormContext();
 
   return (
@@ -21,6 +21,7 @@ const ToolsMultipleSelect = ({ name, field, ...other }) => {
             {...field}
             multiple
             displayEmpty
+            disabled={isSubmitting}
             renderValue={
               field.value.length > 0
                 ? undefined

@@ -41,7 +41,7 @@ function Router() {
           <Route index element={<MyVideoPage />} />
           <Route path="setting" element={<SettingPage />} />
           <Route path="video/creating" element={<CreatingVideoPage />} />
-          <Route path="video/edit" element={<EditVideoPage />} />
+          <Route path="video/edit/:id" element={<EditVideoPage />} />
         </Route>
 
         <Route path="video" element={<VideoPage />}></Route>

@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ToolsMultipleSelect from "../../../components/ToolsMulticheck";
 import MaterialMultipleSelect from "../../../components/MaterialMulticheck";
 import UploadNewVideo from "./UploadNewVideo";
-import { createVideo } from "../videoSlice";
+import { createVideo, updateVideoInfo } from "../videoSlice";
 import { useNavigate } from "react-router-dom";
 import PATH_NAME from "../../../constants/pathName.constants";
 
@@ -35,7 +35,7 @@ const creatingVideoSchema = Yup.object().shape({
   videoUrl: Yup.string().required("Video is required"),
 });
 
-const UploadVideo = ({ initialData }) => {
+const UploadVideo = ({ initialData, isEdit = false }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -79,13 +79,24 @@ const UploadVideo = ({ initialData }) => {
       videoUrl: urlVideoFromCloudy ? urlVideoFromCloudy : data.videoUrl,
     };
     delete formDataSubmit.videoFile;
-    dispatch(createVideo({ ...formDataSubmit, user_id: user._id })).then(
-      (response) => {
+
+    if (isEdit) {
+      dispatch(
+        updateVideoInfo({ data: formDataSubmit, videoId: formDataSubmit._id })
+      ).then((response) => {
         if (response.success) {
-          navigate(PATH_NAME.PROFILE);
+          navigate("/user");
         }
-      }
-    );
+      });
+    } else {
+      dispatch(createVideo({ ...formDataSubmit, user_id: user._id })).then(
+        (response) => {
+          if (response.success) {
+            navigate(PATH_NAME.PROFILE);
+          }
+        }
+      );
+    }
   };
 
   const handleUploadVideo = async (fileVideo) => {
@@ -114,24 +125,28 @@ const UploadVideo = ({ initialData }) => {
         >
           {errors?.videoUrl?.message}
         </p>
-        <div style={{ width: "100%" }}>
-          <h4>Title</h4>
-          <FTextField
-            name="title"
-            placeholder={"Enter your title video"}
-            sx={{ maxWidth: "876px" }}
-          />
-        </div>
 
-        <div style={{ width: "100%" }}>
-          <h4>Description</h4>
-          <FTextField
-            sx={{ maxWidth: "876px" }}
-            name="description"
-            multiline
-            rows={4}
-            placeholder={"Tell your viewers about your video..."}
-          />
+        <div className="draftDisplay_info">
+          <div style={{ width: "100%", maxWidth: "876px" }}>
+            <h4>Title</h4>
+            <FTextField
+              name="title"
+              placeholder={"Enter your title video"}
+              sx={{ maxWidth: "876px" }}
+              disabled={isSubmitting}
+            />
+          </div>
+          <div style={{ width: "100%", maxWidth: "876px" }}>
+            <h4>Description</h4>
+            <FTextField
+              sx={{ maxWidth: "876px" }}
+              disabled={isSubmitting}
+              name="description"
+              multiline
+              rows={4}
+              placeholder={"Tell your viewers about your video..."}
+            />
+          </div>
         </div>
 
         <div
@@ -139,7 +154,12 @@ const UploadVideo = ({ initialData }) => {
           style={{ maxWidth: "876px", width: "100%" }}
         >
           <h4>Duration</h4>
-          <FSelect name="duration" sx={{ maxWidth: "876px" }}>
+
+          <FSelect
+            name="duration"
+            sx={{ maxWidth: "876px" }}
+            disabled={isSubmitting}
+          >
             {DURATION_OPTION.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -148,7 +168,11 @@ const UploadVideo = ({ initialData }) => {
           </FSelect>
 
           <h4>Difficulty</h4>
-          <FSelect name="difficulty" sx={{ maxWidth: "876px" }}>
+          <FSelect
+            name="difficulty"
+            sx={{ maxWidth: "876px" }}
+            disabled={isSubmitting}
+          >
             {DIFFICULTY_OPTION.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -157,13 +181,25 @@ const UploadVideo = ({ initialData }) => {
           </FSelect>
 
           <h4>Material</h4>
-          <MaterialMultipleSelect name="material" sx={{ maxWidth: "876px" }} />
+          <MaterialMultipleSelect
+            name="material"
+            sx={{ maxWidth: "876px" }}
+            disabled={isSubmitting}
+          />
 
           <h4>Tools</h4>
-          <ToolsMultipleSelect name="tool" sx={{ maxWidth: "876px" }} />
+          <ToolsMultipleSelect
+            name="tool"
+            sx={{ maxWidth: "876px" }}
+            disabled={isSubmitting}
+          />
 
           <h4>Category</h4>
-          <FSelect name="category" sx={{ maxWidth: "876px" }}>
+          <FSelect
+            name="category"
+            sx={{ maxWidth: "876px" }}
+            disabled={isSubmitting}
+          >
             {CATEGORY_OPTION.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -172,7 +208,11 @@ const UploadVideo = ({ initialData }) => {
           </FSelect>
 
           <h4>Collection</h4>
-          <FSelect name="collection" sx={{ maxWidth: "876px" }}>
+          <FSelect
+            name="collection"
+            sx={{ maxWidth: "876px" }}
+            disabled={isSubmitting}
+          >
             {COLLECTION_OPTION.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -191,19 +231,35 @@ const UploadVideo = ({ initialData }) => {
             justifyContent: "flex-end",
           }}
         >
-          <LoadingButton
-            fullWidth
-            size="large"
-            type="submit"
-            variant="contained"
-            loading={isSubmitting || isLoading}
-            sx={{
-              maxWidth: "200px",
-              fontWeight: 700,
-            }}
-          >
-            Publish
-          </LoadingButton>
+          {isEdit ? (
+            <LoadingButton
+              fullWidth
+              size="large"
+              type="submit"
+              variant="contained"
+              loading={isSubmitting || isLoading}
+              sx={{
+                maxWidth: "200px",
+                fontWeight: 700,
+              }}
+            >
+              Update
+            </LoadingButton>
+          ) : (
+            <LoadingButton
+              fullWidth
+              size="large"
+              type="submit"
+              variant="contained"
+              loading={isSubmitting || isLoading}
+              sx={{
+                maxWidth: "200px",
+                fontWeight: 700,
+              }}
+            >
+              Publish
+            </LoadingButton>
+          )}
         </div>
       </div>
     </FormProvider>

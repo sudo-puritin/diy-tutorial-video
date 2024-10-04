@@ -5,9 +5,18 @@ import { Player } from "video-react";
 import "video-react/dist/video-react.css";
 import "./DisplayVideo.scss";
 
-const DisplayVideo = ({ videoSrc }) => {
+const DisplayVideo = ({ videoSrc, width, height }) => {
   return (
-    <div className="display_video">
+    <div
+      style={{
+        width: `${width}`,
+        height: `${height}`,
+        background: "#000",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Player className="main_video" playsInline src={videoSrc} />
     </div>
   );

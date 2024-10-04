@@ -8,33 +8,43 @@ import { useNavigate } from "react-router-dom";
 import PATH_NAME from "../../constants/pathName.constants";
 import useAuth from "../../hooks/useAuth";
 import DisplayVideo from "../DisplayVideo";
+import AlertDelete from "../../features/Video/AlertDelete";
 
 function HeroCard({ video }) {
   const { isAuthenticated, user } = useAuth();
 
   const navigate = useNavigate();
 
+  const handleEditVideo = ({ videoId }) => {
+    navigate(`${PATH_NAME.EDIT_VIDEO}/${videoId}`);
+  };
+
   return (
     <Card
       sx={{
         width: "100%",
-        maxheight: "380px",
+        height: "100%",
+        maxheight: "270px",
         maxWidth: "800px",
         display: "flex",
         justifyContent: "space-between",
-        gap: "10px",
-        boxShadow: "none",
+        gap: "28px",
+        boxShadow: "0px 4px 4px 0px #00000040",
       }}
     >
-      <div style={{ width: "100%", maxWidth: "720px" }}>
-        <DisplayVideo videoSrc={video?.videoUrl} />
-      </div>
+      <DisplayVideo
+        videoSrc={video?.videoUrl}
+        width={"440px"}
+        height={"270px"}
+      />
 
       <div
         style={{
           display: "flex",
+          flex: 1,
           flexDirection: "column",
           justifyContent: "space-between",
+          padding: "10px 20px 10px 0",
         }}
       >
         <CardContent height={"100%"} sx={{ p: 0 }}>
@@ -46,28 +56,28 @@ function HeroCard({ video }) {
               {video?.userName.firstName} {video?.userName.lastName}
             </Typography>
           </Box>
-          <Box>
-            <Box className="myVideoInfo_box">
+          <div>
+            <div className="myVideoInfo_box">
               <h4>Material</h4>
-              {video?.material.map((mat, index) => (
-                <p key={index}>{mat}</p>
-              ))}
-            </Box>
-            <Box className="myVideoInfo_box">
+              <div>
+                <p>{video?.material.join(", ")}</p>
+              </div>
+            </div>
+            <div className="myVideoInfo_box">
               <h4>Tool</h4>
-              {video?.tool.map((tol, index) => (
-                <p key={index}>{tol}</p>
-              ))}
-            </Box>
-            <Box className="myVideoInfo_box">
+              <div>
+                <p>{video?.tool.join(", ")}</p>
+              </div>
+            </div>
+            <div className="myVideoInfo_box">
               <h4>Difficulty</h4>
               <p>{video?.difficulty}</p>
-            </Box>
-            <Box className="myVideoInfo_box">
+            </div>
+            <div className="myVideoInfo_box">
               <h4>Duration</h4>
               <p>{video?.duration}</p>
-            </Box>
-          </Box>
+            </div>
+          </div>
         </CardContent>
 
         {isAuthenticated && user._id === video.user_id && (
@@ -75,13 +85,11 @@ function HeroCard({ video }) {
             <Button
               size="small"
               color="warning"
-              onClick={() => navigate(PATH_NAME.EDIT_VIDEO)}
+              onClick={() => handleEditVideo({ videoId: video._id })}
             >
               Edit
             </Button>
-            <Button size="small" color="error">
-              Delete
-            </Button>
+            <AlertDelete videoId={video._id} userId={video.user_id} />
           </div>
         )}
       </div>

@@ -35,7 +35,7 @@ function CategoryPage() {
       <SearchTable />
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <HeroCard />
+        {/* <HeroCard /> */}
       </div>
 
       <div style={{ marginTop: "20px" }}>

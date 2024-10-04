@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { Player } from "video-react";
 import { useFormContext } from "react-hook-form";
 
 import "video-react/dist/video-react.css";
 import { Box, LinearProgress } from "@mui/material";
+import DisplayVideo from "../../../components/DisplayVideo";
 
 const UploadNewVideo = ({ videoSrc, setVideoSrc }) => {
   const { setValue } = useFormContext();
@@ -46,7 +46,12 @@ const UploadNewVideo = ({ videoSrc, setVideoSrc }) => {
             Your videos will be private until you publish them.
           </p>
           {loadingUploadVideo && (
-            <Box sx={{ width: "100%", marginTop: "10px" }}>
+            <Box
+              sx={{
+                width: "100%",
+                marginTop: "10px",
+              }}
+            >
               <LinearProgress />
             </Box>
           )}
@@ -54,7 +59,7 @@ const UploadNewVideo = ({ videoSrc, setVideoSrc }) => {
       </div>
       <div className="display_video">
         {!!videoSrc && (
-          <Player playsInline src={videoSrc} width={180} height={20} />
+          <DisplayVideo videoSrc={videoSrc} width={"800px"} height={"400px"} />
         )}
       </div>
     </>

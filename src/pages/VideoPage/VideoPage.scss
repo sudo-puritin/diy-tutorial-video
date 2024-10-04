@@ -1,15 +1,50 @@
-.leftSideVideoPage_container {
-  max-width: calc((100vh - 56px - 24px - 136px) * (16 / 9));
-  min-width: calc((480px * (16 / 9)));
+.player_display {
+  max-width: calc(100vh * (16 / 9));
+  min-width: calc((360px * (16 / 9)));
   border: 1px solid black;
-  .player_box {
-    height: 720px;
-    border: 1px solid red;
+}
+
+.underPlayerDisplay_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.player_detail {
+  width: 70%;
+  margin: 12px 12px 0 0;
+
+  .player_title {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
   }
-  .below_player_box {
-    height: 194px; //test
+
+  .player_ownerInfo {
+    margin: 12px 12px 0 0;
+    display: flex;
+    gap: 12px;
+
+    .ownerName_box {
+      font-weight: 600;
+    }
+  }
+
+  .player_description {
     margin-top: 12px;
-    margin-bottom: 24px;
-    border: 1px solid yellow;
   }
+  .player_info {
+    display: flex;
+    flex-direction: column;
+
+    .player_info_box {
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.player_recommendation {
+  width: 30%;
+  max-width: 390px;
 }
