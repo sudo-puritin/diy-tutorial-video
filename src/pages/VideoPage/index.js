@@ -2,17 +2,18 @@ import React from "react";
 
 import "./VideoPage.scss";
 import { Avatar } from "@mui/material";
+import { MiniCard } from "../../components/MiniCard";
 
 function VideoPage() {
   return (
     <div className="videoPage_container">
-      <div className="player_display" style={{ position: "relative" }}>
-        <img src="images/art3.png" alt="test" width={"100%"} height={"100%"} />
+      <div className="player_display">
+        <img src="images/art3.png" alt="test" width={"100%"} />
       </div>
 
       <div className="underPlayerDisplay_container">
         <div className="player_detail">
-          <div className="player_title">Title of Video</div>
+          <h2 className="player_title">Title of Video</h2>
           <div className="player_ownerInfo">
             <div className="avatar_box">
               <Avatar width="40px" />
@@ -54,27 +55,8 @@ function VideoPage() {
         </div>
 
         <div className="player_recommendation">
-          <div width="100%" style={{ background: "yellow" }}>
-            1
-          </div>
-          <div width="100%" style={{ background: "yellow" }}>
-            2
-          </div>
-          <div width="100%" style={{ background: "yellow" }}>
-            3
-          </div>
-          <div width="100%" style={{ background: "yellow" }}>
-            4
-          </div>
-          <div width="100%" style={{ background: "yellow" }}>
-            5
-          </div>
-          <div width="100%" style={{ background: "yellow" }}>
-            6
-          </div>
-          <div width="100%" style={{ background: "yellow" }}>
-            7
-          </div>
+          <h2>RECOMMENDATION</h2>
+          <MiniCard />
         </div>
       </div>
     </div>
