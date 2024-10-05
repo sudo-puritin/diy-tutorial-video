@@ -13,7 +13,7 @@ const initialState = {
 };
 
 const slice = createSlice({
-  name: "user",
+  name: "video",
   initialState,
   reducers: {
     startLoading(state) {

@@ -11,6 +11,7 @@ const DisplayVideo = ({ videoSrc, width, height }) => {
       style={{
         width: `${width}`,
         height: `${height}`,
+        maxWidth: `calc(100vh * (16 / 9))`,
         background: "#000",
         display: "flex",
         justifyContent: "center",

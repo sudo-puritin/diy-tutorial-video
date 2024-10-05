@@ -13,7 +13,7 @@ function AuthRequire({ children }) {
 
   if (!isInitialized) {
     return (
-      <div>
+      <div style={{ height: "70vh" }}>
         <LoadingScreen />
       </div>
     );

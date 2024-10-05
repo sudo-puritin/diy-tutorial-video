@@ -14,23 +14,28 @@ const AlertDelete = ({ videoId, userId }) => {
 
   const dispatch = useDispatch();
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (e) => {
+    e.stopPropagation();
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.stopPropagation();
+
     setOpen(false);
   };
 
-  const handleDelete = (videoId) => {
+  const handleDelete = (e) => {
+    e.stopPropagation();
+
     setOpen(false);
-    dispatch(deleteVideoInfo({ videoId: videoId })).then(() =>
-      dispatch(getMyVideo({ userId: userId }))
+    dispatch(deleteVideoInfo({ videoId })).then(() =>
+      dispatch(getMyVideo({ userId }))
     );
   };
 
   return (
-    <React.Fragment>
+    <>
       <Button variant="text" onClick={handleClickOpen} color="error">
         Remove
       </Button>
@@ -54,7 +59,7 @@ const AlertDelete = ({ videoId, userId }) => {
             Cancel
           </Button>
           <Button
-            onClick={() => handleDelete(videoId, userId)}
+            onClick={handleDelete}
             variant="contained"
             startIcon={<DeleteIcon />}
             color="error"
@@ -64,7 +69,7 @@ const AlertDelete = ({ videoId, userId }) => {
           </Button>
         </DialogActions>
       </Dialog>
-    </React.Fragment>
+    </>
   );
 };
 

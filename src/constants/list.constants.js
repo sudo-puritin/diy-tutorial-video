@@ -1,5 +1,5 @@
 export const DURATION_OPTION = [
-  { value: "", label: "None" },
+  { value: "", label: "" },
   { value: "2h", label: "< 2 Hour" },
   { value: "4h", label: "2 - 4 Hours" },
   { value: "8h", label: "4 - 8 Hours" },
@@ -10,14 +10,14 @@ export const DURATION_OPTION = [
 ];
 
 export const DIFFICULTY_OPTION = [
-  { value: "", label: "None" },
+  { value: "", label: "" },
   { value: "easy", label: "Easy" },
   { value: "medium", label: "Medium" },
   { value: "hard", label: "Hard" },
 ];
 
 export const CATEGORY_OPTION = [
-  { value: "", label: "None" },
+  { value: "", label: "" },
   { value: "art", label: "Art" },
   { value: "clothes", label: "Clothes" },
   {
@@ -32,7 +32,7 @@ export const CATEGORY_OPTION = [
 ];
 
 export const COLLECTION_OPTION = [
-  { value: "", label: "None" },
+  { value: "", label: "" },
   {
     value: "christmas",
     label: "Christmas Decoration",
@@ -68,7 +68,7 @@ export const COLLECTION_OPTION = [
 ];
 
 export const MATERIAL_OPTION = [
-  { value: "", label: "None" },
+  { value: "", label: "" },
   { value: "adhesive", label: "Adhesive" },
   { value: "brick", label: "Brick" },
   { value: "glass", label: "Glass" },
@@ -83,7 +83,7 @@ export const MATERIAL_OPTION = [
 ];
 
 export const TOOLS_OPTION = [
-  { value: "", label: "None" },
+  { value: "", label: "" },
   { value: "drill", label: "Drill" },
   { value: "hammer", label: "Hammer" },
   { value: "saw", label: "Saw" },

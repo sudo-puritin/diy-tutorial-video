@@ -11,7 +11,12 @@
 }
 .player_detail {
   width: 65%;
-  margin-right: 12px;
+  padding-right: 24px;
+
+  .player_title {
+    margin-top: 12px;
+    margin-bottom: 0;
+  }
 
   .player_ownerInfo {
     margin-right: 12px;
@@ -25,6 +30,7 @@
 
   .player_description {
     margin-top: 12px;
+    text-align: justify;
   }
   .player_info {
     margin-top: 12px;
@@ -35,6 +41,7 @@
       max-width: 400px;
       max-height: 32px;
       margin: 0;
+      text-transform: capitalize;
       display: flex;
       justify-content: space-between;
       align-items: center;

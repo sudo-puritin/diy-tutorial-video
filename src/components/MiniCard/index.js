@@ -1,10 +1,12 @@
 import React from "react";
 import "./MiniCard.scss";
 
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import DisplayVideo from "../DisplayVideo";
 
 export const MiniCard = ({ userId, videoId }) => {
+  const stringTitle = `Tittle Video will be a long title, include 56 characters and you won't
+          believe`;
   return (
     <Card
       sx={{
@@ -37,7 +39,9 @@ export const MiniCard = ({ userId, videoId }) => {
       >
         <Typography variant="h7">Thinh Nguyen</Typography>
         <Typography variant="h7" sx={{ fontWeight: 600 }}>
-          Tittle Video
+          {stringTitle.length > 20
+            ? stringTitle.slice(0, 20) + "..."
+            : stringTitle}
         </Typography>
         <Typography variant="h7" sx={{ fontStyle: "italic" }}>
           Easy

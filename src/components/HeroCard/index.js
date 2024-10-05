@@ -1,7 +1,7 @@
 import React from "react";
 import "./HeroCard.scss";
 
-import { Box, Button, Card, CardContent, Typography } from "@mui/material";
+import { Button, Card, Typography } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 
@@ -9,14 +9,22 @@ import PATH_NAME from "../../constants/pathName.constants";
 import useAuth from "../../hooks/useAuth";
 import DisplayVideo from "../DisplayVideo";
 import AlertDelete from "../../features/Video/AlertDelete";
+import { MATERIAL_OPTION, TOOLS_OPTION } from "../../constants/list.constants";
+import { formatArrayToStringLabel } from "../../ultis/formatArrayDataToLabel";
 
 function HeroCard({ video }) {
   const { isAuthenticated, user } = useAuth();
 
   const navigate = useNavigate();
 
-  const handleEditVideo = ({ videoId }) => {
-    navigate(`${PATH_NAME.EDIT_VIDEO}/${videoId}`);
+  const handleEditVideo = (e) => {
+    e.stopPropagation();
+
+    navigate(`${PATH_NAME.EDIT_VIDEO}/${video._id}`);
+  };
+
+  const handleWatchVideo = (e) => {
+    navigate(`../video/${video._id}`);
   };
 
   return (
@@ -28,65 +36,55 @@ function HeroCard({ video }) {
         maxWidth: "800px",
         display: "flex",
         justifyContent: "space-between",
-        gap: "28px",
+        gap: "20px",
         boxShadow: "0px 4px 4px 0px #00000040",
       }}
     >
       <DisplayVideo
         videoSrc={video?.videoUrl}
-        width={"440px"}
-        height={"270px"}
+        width={"444px"}
+        height={"250px"}
       />
 
-      <div
-        style={{
-          display: "flex",
-          flex: 1,
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: "10px 20px 10px 0",
-        }}
-      >
-        <CardContent height={"100%"} sx={{ p: 0 }}>
-          <Box mb={2}>
-            <Typography variant="h5" sx={{ fontWeight: 700 }}>
-              {video?.title}
+      <div className="displayHeroCard_info" onClick={handleWatchVideo}>
+        <div className="displayMainHeroCard_detail">
+          <Typography variant="h5" sx={{ fontWeight: 700 }}>
+            {video?.title}
+          </Typography>
+          <Typography variant="h6">
+            {video?.userName.firstName} {video?.userName.lastName}
+          </Typography>
+        </div>
+        <div className="displayHeroCard_detail">
+          <div className="heroCard_detail">
+            <Typography sx={{ fontWeight: 600 }}>Material</Typography>
+            <Typography>
+              {" "}
+              {formatArrayToStringLabel(
+                video?.material.split(","),
+                MATERIAL_OPTION
+              )}
             </Typography>
-            <Typography variant="h6">
-              {video?.userName.firstName} {video?.userName.lastName}
-            </Typography>
-          </Box>
-          <div>
-            <div className="myVideoInfo_box">
-              <h4>Material</h4>
-              <div>
-                <p>{video?.material.join(", ")}</p>
-              </div>
-            </div>
-            <div className="myVideoInfo_box">
-              <h4>Tool</h4>
-              <div>
-                <p>{video?.tool.join(", ")}</p>
-              </div>
-            </div>
-            <div className="myVideoInfo_box">
-              <h4>Difficulty</h4>
-              <p>{video?.difficulty}</p>
-            </div>
-            <div className="myVideoInfo_box">
-              <h4>Duration</h4>
-              <p>{video?.duration}</p>
-            </div>
           </div>
-        </CardContent>
+          <div className="heroCard_detail">
+            <Typography sx={{ fontWeight: 600 }}>Tool</Typography>
+            <Typography>
+              {formatArrayToStringLabel(video?.tool.split(","), TOOLS_OPTION)}
+            </Typography>
+          </div>
+          <div className="heroCard_detail">
+            <Typography sx={{ fontWeight: 600 }}>Difficulty</Typography>
+            <Typography>{video?.difficulty}</Typography>
+          </div>
+          <div className="heroCard_detail">
+            <Typography sx={{ fontWeight: 600 }}>Duration</Typography>
+            <Typography>~{video?.duration}</Typography>
+          </div>
+        </div>
 
         {isAuthenticated && user._id === video.user_id && (
-          <div className="actionVideo_btn">
-            <Button
-              size="small"
-              color="warning"
-              onClick={() => handleEditVideo({ videoId: video._id })}
-            >
+          <div className="displayHeroCard_option">
+            <Button size="small" color="warning" onClick={handleEditVideo}>
               Edit
             </Button>
             <AlertDelete videoId={video._id} userId={video.user_id} />

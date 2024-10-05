@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import UploadAvatar from "../../features/User/UploadAvatar";
 
@@ -10,10 +10,11 @@ import "./UserPage.scss";
 
 function UserPage() {
   const { user } = useAuth();
+  const location = useLocation();
 
   const navigate = useNavigate();
 
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState(location?.pathname);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -42,13 +43,13 @@ function UserPage() {
                   <Tab
                     className="option_btn"
                     label="Video"
-                    value="1"
+                    value="/user"
                     onClick={() => navigate("/user")}
                   />
                   <Tab
                     className="option_btn"
                     label="Setting"
-                    value="2"
+                    value="/user/setting"
                     onClick={() => navigate("/user/setting")}
                   />
                 </TabList>

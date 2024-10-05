@@ -18,8 +18,8 @@ import SettingPage from "../pages/UserPage/SettingPage";
 import CreatingVideoPage from "../pages/UserPage/CreatingVideoPage";
 import EditVideoPage from "../pages/UserPage/EditVideoPage";
 
-import VideoPage from "../pages/VideoPage";
 import AuthRequire from "./AuthRequire";
+import WatchVideoPage from "../pages/WatchVideoPage";
 
 function Router() {
   return (
@@ -44,7 +44,7 @@ function Router() {
           <Route path="video/edit/:id" element={<EditVideoPage />} />
         </Route>
 
-        <Route path="video" element={<VideoPage />}></Route>
+        <Route path="video/:videoID" element={<WatchVideoPage />}></Route>
       </Route>
 
       <Route element={<BlankLayout />}>

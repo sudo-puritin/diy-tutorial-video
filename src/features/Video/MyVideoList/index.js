@@ -19,7 +19,13 @@ function MyVideoList({ userId }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (isLoading) return <LoadingScreen />;
+  if (isLoading) {
+    return (
+      <div style={{ height: "65vh" }}>
+        <LoadingScreen />
+      </div>
+    );
+  }
   return (
     <div className="myVideoList_container">
       {myVideo?.map((video) => (

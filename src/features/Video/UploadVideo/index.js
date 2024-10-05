@@ -76,6 +76,8 @@ const UploadVideo = ({ initialData, isEdit = false }) => {
     }
     const formDataSubmit = {
       ...data,
+      material: data.material.join(","),
+      tool: data.tool.join(","),
       videoUrl: urlVideoFromCloudy ? urlVideoFromCloudy : data.videoUrl,
     };
     delete formDataSubmit.videoFile;

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FormProvider, FSelect, FTextField } from "../Form";
 
 import "./searchTable.scss";
@@ -11,7 +11,6 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
-  MenuItem,
   Stack,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
@@ -24,18 +23,19 @@ import {
   MATERIAL_OPTION,
   TOOLS_OPTION,
 } from "../../constants/list.constants";
+import MaterialMultipleSelect from "../MaterialMulticheck";
 
-const defaultValue = {
+const defaultValues = {
   videoTitle: "",
   duration: "",
   difficulty: "",
   category: "",
-  material: "",
-  tools: "",
+  material: [],
+  tools: [],
 };
 
 function SearchTable() {
-  const methods = useForm({ defaultValue });
+  const methods = useForm({ defaultValues });
 
   const {
     handleSubmit,
@@ -102,13 +102,7 @@ function SearchTable() {
                 </Grid>
 
                 <Grid className="grid_box" size={4}>
-                  <FSelect name="material" label="Material">
-                    {MATERIAL_OPTION.map((option) => (
-                      <option key={option.value} value={option.label}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </FSelect>
+                  <MaterialMultipleSelect name="material" label="Material" />
                 </Grid>
 
                 <Grid className="grid_box" size={4}>
