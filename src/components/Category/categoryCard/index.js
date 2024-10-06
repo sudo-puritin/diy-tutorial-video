@@ -1,8 +1,6 @@
 import React from "react";
 import "./categoryCard.scss";
 
-import { Link } from "react-router-dom";
-
 import {
   Box,
   Card,
@@ -13,9 +11,9 @@ import {
 } from "@mui/material";
 import { NEUTRAL, PRIMARY } from "../../../themes";
 
-function CategoryCard({ data }) {
+function CategoryCard({ data, handleNavigateCategory }) {
   return (
-    <Box width={"240px"}>
+    <div width={"240px"} onClick={() => handleNavigateCategory(data.value)}>
       <Card sx={{ borderRadius: 0 }}>
         <CardActionArea sx={{ background: NEUTRAL[300] }}>
           <CardMedia
@@ -41,7 +39,7 @@ function CategoryCard({ data }) {
           </CardContent>
         </CardActionArea>
       </Card>
-    </Box>
+    </div>
   );
 }
 

@@ -7,8 +7,26 @@ import CollectionCard from "./collectionCard";
 
 import { Typography } from "@mui/material";
 import { COLLECTION_LIST } from "../../constants/list.constants";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  searchVideo,
+  setCollectionStore,
+} from "../../features/Video/videoSlice";
+import PATH_NAME from "../../constants/pathName.constants";
 
-function collectionList() {
+function CollectionList() {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const handleNavigateCollection = (collection) => {
+    dispatch(setCollectionStore(collection));
+    dispatch(searchVideo({ collection })).then(() =>
+      navigate(PATH_NAME.COLLECTION)
+    );
+  };
+
   return (
     <div className="collectionList">
       <Typography
@@ -26,9 +44,12 @@ function collectionList() {
         Collection
       </Typography>
       <Swiper grabCursor={true} spaceBetween={24} slidesPerView={"auto"}>
-        {COLLECTION_LIST.map((col) => (
-          <SwiperSlide key={col.value}>
-            <CollectionCard data={col} />
+        {COLLECTION_LIST.map((collection) => (
+          <SwiperSlide key={collection.value}>
+            <CollectionCard
+              data={collection}
+              handleNavigateCollection={handleNavigateCollection}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -36,4 +57,4 @@ function collectionList() {
   );
 }
 
-export default collectionList;
+export default CollectionList;

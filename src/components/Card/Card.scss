@@ -7,6 +7,10 @@
     padding-top: 8px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    .like_icon_fCard {
+      display: none;
+    }
   }
 }
 

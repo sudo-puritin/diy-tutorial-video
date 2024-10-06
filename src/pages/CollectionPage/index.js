@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import SearchTable from "../../components/SearchTable";
-import HeroCard from "../../components/HeroCard";
 import ResultList from "../../components/ResultList";
 
 import { COLLECTION_LIST } from "../../constants/list.constants";
@@ -11,39 +9,69 @@ import { COLLECTION_LIST } from "../../constants/list.constants";
 import { Chip, Pagination, PaginationItem, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import "./CollectionPage.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { SUCCESS } from "../../themes";
+import {
+  searchVideo,
+  setCollectionStore,
+} from "../../features/Video/videoSlice";
 
 function CollectionPage() {
-  const handleClick = (data) => {
-    console.log("Show Data", data);
+  const dispatch = useDispatch();
+
+  const { videos, totalPage, collectionStore, page } = useSelector(
+    (state) => state.video
+  );
+  const [collection, setCollection] = useState(collectionStore);
+
+  useEffect(() => {
+    if (!collection && !videos.length) {
+      dispatch(searchVideo());
+    }
+    dispatch(setCollectionStore(""));
+  }, [dispatch, collection, videos]);
+
+  const handleClick = (collection) => {
+    setCollection(collection);
+    dispatch(searchVideo({ collection }));
   };
+
+  const onChangePage = (page) => {
+    dispatch(searchVideo({ collection, page }));
+  };
+
   return (
     <>
       <Swiper spaceBetween={5} slidesPerView={7.5}>
-        {COLLECTION_LIST.map((col) => (
-          <SwiperSlide key={col.value}>
+        {COLLECTION_LIST.map((col, index) => (
+          <SwiperSlide key={index} style={{ width: "max-content !important" }}>
             <Chip
+              className="chip_box_collection"
               label={col.label}
               onClick={() => handleClick(col.value)}
-              sx={{ width: "100%", textTransform: `capitalize !important ` }}
+              sx={{
+                width: "100%",
+                textTransform: `capitalize !important `,
+                background: col.value === collection ? SUCCESS.light : "",
+              }}
             />
           </SwiperSlide>
         ))}
       </Swiper>
 
-      <SearchTable />
-
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        {/* <HeroCard /> */}
-      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}></div>
 
       <div style={{ marginTop: "20px" }}>
-        <ResultList />
+        <ResultList videos={videos} />
 
         <Stack spacing={2} mt={2}>
           <Pagination
-            count={10}
+            count={totalPage}
+            page={page}
             shape="rounded"
             sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+            onChange={(e) => onChangePage(e.target.value)}
             renderItem={(item) => (
               <PaginationItem
                 shape="rounded"

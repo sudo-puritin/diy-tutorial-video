@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 import classes from "./heroSlice.module.scss";
 
 function HeroSlice() {
+  const navigate = useNavigate();
+
   return (
     <>
       <div
@@ -19,11 +21,13 @@ function HeroSlice() {
               className={classes["image_text"]}
             />
           </div>
-          <Link to={""} className={classes["btnDetailWrapper"]}>
-            <Button className={classes["btnDetail"]} variant="contained">
-              Learn More
-            </Button>
-          </Link>
+          <Button
+            className={classes["btnDetail"]}
+            variant="contained"
+            onClick={() => navigate("/search")}
+          >
+            Learn More
+          </Button>
         </div>
       </div>
     </>

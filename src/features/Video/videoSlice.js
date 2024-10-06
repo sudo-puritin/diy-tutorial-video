@@ -5,11 +5,18 @@ import { API } from "../../constants/API.constants";
 
 const initialState = {
   isLoading: false,
+  isLoadingDetail: true,
   error: null,
   myVideo: null,
-  videos: [],
   videoDetail: null,
   updateVideoInfo: null,
+  categoryStore: null,
+  collectionStore: null,
+  videos: [],
+  rating: null,
+  viewing: null,
+  page: 1,
+  totalPage: null,
 };
 
 const slice = createSlice({
@@ -19,9 +26,13 @@ const slice = createSlice({
     startLoading(state) {
       state.isLoading = true;
     },
+    startLoadingDetail(state) {
+      state.isLoadingDetail = true;
+    },
     hasError(state, action) {
       state.isLoading = false;
       state.error = action.payload;
+      state.isLoadingDetail = false;
     },
     createVideoSuccess(state, action) {
       state.isLoading = false;
@@ -34,15 +45,10 @@ const slice = createSlice({
       state.error = null;
       state.myVideo = action.payload.videoList;
     },
-    getVideoListSuccess(state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.videos = action.payload;
-    },
     getVideoDetailSuccess(state, action) {
-      state.isLoading = false;
-      state.error = null;
       state.videoDetail = action.payload;
+      state.error = null;
+      state.isLoadingDetail = false;
     },
     updateVideoSuccess(state, action) {
       state.isLoading = false;
@@ -54,6 +60,27 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
       toast.success("The video has been removed successfully");
+    },
+    searchVideoSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.videos = action.payload.searchVideos;
+      state.totalPage = action.payload.totalPage;
+      state.page = action.payload.page;
+    },
+    setCategorySuccess(state, action) {
+      state.categoryStore = action.payload;
+    },
+    setCollectionSuccess(state, action) {
+      state.collectionStore = action.payload;
+    },
+    updateRatingSuccess(state, action) {
+      state.rating = action.payload;
+    },
+    updateViewingSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.viewing = action.payload;
     },
   },
 });
@@ -91,25 +118,10 @@ export const getMyVideo =
     }
   };
 
-export const getVideoList = () => async (dispatch) => {
-  dispatch(slice.actions.startLoading());
-  try {
-    const response = await apiService.get(`${API.GET_VIDEO}`);
-
-    dispatch(slice.actions.getVideoListSuccess(response.data));
-
-    return { success: true };
-  } catch (error) {
-    dispatch(slice.actions.hasError(error.message));
-    toast.error(error.message);
-    return { success: false };
-  }
-};
-
 export const getVideoDetail =
   ({ videoId }) =>
   async (dispatch) => {
-    dispatch(slice.actions.startLoading());
+    dispatch(slice.actions.startLoadingDetail());
     try {
       const response = await apiService.get(`${API.UPDATE_VIDEO}/${videoId}`);
       dispatch(slice.actions.getVideoDetailSuccess(response.data));
@@ -149,6 +161,69 @@ export const deleteVideoInfo =
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
       toast.error(error.message);
+      return { success: false };
+    }
+  };
+
+export const searchVideo = (queryParams) => async (dispatch) => {
+  dispatch(slice.actions.startLoading());
+  try {
+    const response = await apiService.get(`${API.SEARCH_VIDEO}`, {
+      params: { ...queryParams, limit: 12 },
+    });
+
+    dispatch(
+      slice.actions.searchVideoSuccess({
+        ...response.data,
+        page: queryParams?.page || slice.getInitialState().page,
+      })
+    );
+  } catch (error) {
+    dispatch(slice.actions.hasError(error.message));
+    return { success: false };
+  }
+};
+
+export const setCategoryStore = (category) => (dispatch) => {
+  dispatch(slice.actions.setCategorySuccess(category));
+  return { success: true };
+};
+
+export const setCollectionStore = (collection) => (dispatch) => {
+  dispatch(slice.actions.setCollectionSuccess(collection));
+};
+
+export const updateRating =
+  ({ userId, videoId }) =>
+  async (dispatch) => {
+    try {
+      const response = await apiService.put(
+        `${API.UPDATING_RATING}/${videoId}`,
+        {
+          userId,
+        }
+      );
+      dispatch(slice.actions.updateRatingSuccess(response.data));
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      return { success: false };
+    }
+  };
+
+export const updateViewing =
+  ({ videoId, data }) =>
+  async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await apiService.put(
+        `${API.UPDATING_VIEWING}/${videoId}`,
+        {
+          ...data,
+        }
+      );
+      dispatch(slice.actions.updateViewingSuccess(response.data));
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
       return { success: false };
     }
   };

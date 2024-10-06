@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Swiper } from "swiper/react";
 import { SwiperSlide } from "swiper/react";
 
-import SearchTable from "../../components/SearchTable";
-import HeroCard from "../../components/HeroCard";
 import ResultList from "../../components/ResultList";
 
 import { CATEGORY_LIST } from "../../constants/list.constants";
@@ -12,40 +10,68 @@ import { CATEGORY_LIST } from "../../constants/list.constants";
 import { Chip, Pagination, PaginationItem, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useDispatch, useSelector } from "react-redux";
+import { searchVideo, setCategoryStore } from "../../features/Video/videoSlice";
+import { SUCCESS } from "../../themes";
+
+import "./CategoryPage.scss";
 
 function CategoryPage() {
-  const handleClick = (data) => {
-    console.log("Show Data", data);
+  const dispatch = useDispatch();
+
+  const { videos, totalPage, categoryStore, page } = useSelector(
+    (state) => state.video
+  );
+  const [category, setCategory] = useState(categoryStore);
+
+  useEffect(() => {
+    if (!category && !videos.length) {
+      dispatch(searchVideo());
+    }
+    dispatch(setCategoryStore(""));
+  }, [dispatch, videos, category]);
+
+  const handleClick = (category) => {
+    setCategory(category);
+    dispatch(searchVideo({ category }));
+  };
+
+  const onChangePage = (page) => {
+    dispatch(searchVideo({ category, page }));
   };
 
   return (
     <>
       <Swiper spaceBetween={5} slidesPerView={7.5}>
-        {CATEGORY_LIST.map((cate) => (
-          <SwiperSlide key={cate.value}>
+        {CATEGORY_LIST.map((cate, index) => (
+          <SwiperSlide key={index} style={{ width: "max-content" }}>
             <Chip
+              className="chip_box"
+              value={cate.value}
               label={cate.label}
               onClick={() => handleClick(cate.value)}
-              sx={{ width: "100%", textTransform: `capitalize !important ` }}
+              sx={{
+                width: "max-content",
+                textTransform: `capitalize !important `,
+                background: cate.value === category ? SUCCESS.light : "",
+              }}
             />
           </SwiperSlide>
         ))}
       </Swiper>
 
-      <SearchTable />
-
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        {/* <HeroCard /> */}
-      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}></div>
 
       <div style={{ marginTop: "20px" }}>
-        <ResultList />
+        <ResultList videos={videos} />
 
         <Stack spacing={2} mt={2}>
           <Pagination
-            count={10}
+            count={totalPage}
+            page={page}
             shape="rounded"
             sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+            onChange={(e) => onChangePage(e.target.value)}
             renderItem={(item) => (
               <PaginationItem
                 shape="rounded"

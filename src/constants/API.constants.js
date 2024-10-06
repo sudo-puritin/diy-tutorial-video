@@ -8,4 +8,7 @@ export const API = {
   GET_MY_VIDEO: "/videos/user",
   UPDATE_VIDEO: "/videos",
   DELETE_VIDEO: "/videos",
+  SEARCH_VIDEO: "/videos",
+  UPDATING_RATING: "/videos/rating",
+  UPDATING_VIEWING: "/videos/rating",
 };

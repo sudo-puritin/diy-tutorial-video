@@ -36,6 +36,7 @@ const creatingVideoSchema = Yup.object().shape({
 });
 
 const UploadVideo = ({ initialData, isEdit = false }) => {
+  console.log("🚀 Puritin ~ UploadVideo ~ initialData:", initialData);
   const { user } = useAuth();
   const navigate = useNavigate();
 

@@ -2,7 +2,6 @@ import React from "react";
 import "./collectionCard.css";
 
 import {
-  Box,
   Card,
   CardActionArea,
   CardContent,
@@ -10,9 +9,9 @@ import {
   Typography,
 } from "@mui/material";
 
-function CollectionCard({ data }) {
+function CollectionCard({ data, handleNavigateCollection }) {
   return (
-    <Box>
+    <div onClick={() => handleNavigateCollection(data.value)}>
       <Card sx={{ borderRadius: 0, boxShadow: "none" }}>
         <CardActionArea>
           <CardMedia
@@ -37,7 +36,7 @@ function CollectionCard({ data }) {
           </CardContent>
         </CardActionArea>
       </Card>
-    </Box>
+    </div>
   );
 }
 

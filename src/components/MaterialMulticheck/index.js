@@ -1,19 +1,15 @@
 import * as React from "react";
-import {
-  MATERIAL_MULTI_OPTION,
-  MATERIAL_OPTION,
-} from "../../constants/list.constants";
+import { MATERIAL_MULTI_OPTION } from "../../constants/list.constants";
 import { Controller, useFormContext } from "react-hook-form";
-import FormControl from "@mui/material/FormControl";
-import "./MaterialMultipleSelect.scss";
 
+import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
-import { InputLabel } from "@mui/material";
 
-const MaterialMultipleSelect = ({ name, field, ...other }) => {
-  console.log("🚀 Puritin ~ MaterialMultipleSelect ~ field:", field);
+import "./MaterialMultipleSelect.scss";
+
+const MaterialMultipleSelect = ({ name, field, label, ...other }) => {
   const { control } = useFormContext();
 
   return (
@@ -22,9 +18,8 @@ const MaterialMultipleSelect = ({ name, field, ...other }) => {
       control={control}
       render={({ field, fieldState: { error } }) => (
         <FormControl sx={{ width: "100%" }}>
-          <InputLabel id="select-label">{other.label}</InputLabel>
+          <div style={{ marginBottom: 4 }}>{label}</div>
           <Select
-            labelId="select-label"
             className="materialOption_box"
             {...field}
             multiple
@@ -32,7 +27,7 @@ const MaterialMultipleSelect = ({ name, field, ...other }) => {
             renderValue={
               field.value?.length > 0 || other.label
                 ? undefined
-                : () => <em>Select material(s)</em>
+                : () => <p>Select material(s)</p>
             }
             {...other}
           >

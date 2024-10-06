@@ -1,7 +1,7 @@
 import { useFormContext, Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
 
-function FTextField({ name, ...other }) {
+function FTextField({ name, label, ...other }) {
   const { control } = useFormContext();
 
   return (
@@ -9,14 +9,17 @@ function FTextField({ name, ...other }) {
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <TextField
-          {...field}
-          fullWidth
-          error={!!error}
-          helperText={error?.message}
-          size="small"
-          {...other}
-        />
+        <>
+          <div style={{ marginBottom: 4 }}>{label}</div>
+          <TextField
+            {...field}
+            fullWidth
+            error={!!error}
+            helperText={error?.message}
+            size="small"
+            {...other}
+          />
+        </>
       )}
     />
   );

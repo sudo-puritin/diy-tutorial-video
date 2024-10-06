@@ -1,10 +1,14 @@
 import React from "react";
-
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { FormProvider, FSelect, FTextField } from "../Form";
 
-import "./searchTable.scss";
+import {
+  CATEGORY_OPTION,
+  DIFFICULTY_OPTION,
+  DURATION_OPTION,
+} from "../../constants/list.constants";
+import MaterialMultipleSelect from "../MaterialMulticheck";
+import ToolsMultipleSelect from "../ToolsMulticheck";
 
 import {
   Accordion,
@@ -16,41 +20,46 @@ import {
 import { LoadingButton } from "@mui/lab";
 import Grid from "@mui/material/Grid2";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import {
-  CATEGORY_OPTION,
-  DIFFICULTY_OPTION,
-  DURATION_OPTION,
-  MATERIAL_OPTION,
-  TOOLS_OPTION,
-} from "../../constants/list.constants";
-import MaterialMultipleSelect from "../MaterialMulticheck";
 
-const defaultValues = {
-  videoTitle: "",
-  duration: "",
-  difficulty: "",
-  category: "",
-  material: [],
-  tools: [],
-};
+import "./searchTable.scss";
 
-function SearchTable() {
-  const methods = useForm({ defaultValues });
+const SearchTable = ({
+  title = "",
+  category = "",
+  duration = "",
+  difficulty = "",
+  material = [],
+  tool = [],
+  handleSearchVideo,
+}) => {
+  const methods = useForm({
+    defaultValues: {
+      title,
+      category,
+      duration,
+      difficulty,
+      material,
+      tool,
+    },
+  });
 
   const {
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
   } = methods;
 
-  const navigate = useNavigate();
-
   const onSubmit = async (data) => {
-    console.log("Submitted Data", data);
+    const formDataSubmit = {
+      ...data,
+      material: data.material.join(","),
+      tool: data.tool.join(","),
+    };
+    handleSearchVideo(formDataSubmit);
   };
 
   return (
     <Box component="div" style={{ padding: "16px 0px 16px 0px" }}>
-      <Accordion className="searchContainer">
+      <Accordion className="searchContainer" defaultExpanded>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
@@ -68,13 +77,13 @@ function SearchTable() {
                 columns={12}
               >
                 <Grid className="grid_box" size={4}>
-                  <FTextField name="videoTitle" label="Video Title" />
+                  <FTextField name="title" label="Video Title" />
                 </Grid>
 
                 <Grid className="grid_box" size={4}>
                   <FSelect name="duration" label="Duration">
                     {DURATION_OPTION.map((option) => (
-                      <option key={option.value} value={option.label}>
+                      <option key={option.value} value={option.value}>
                         {option.label}
                       </option>
                     ))}
@@ -84,7 +93,7 @@ function SearchTable() {
                 <Grid className="grid_box" size={4}>
                   <FSelect name="difficulty" label="Difficulty">
                     {DIFFICULTY_OPTION.map((option) => (
-                      <option key={option.value} value={option.label}>
+                      <option key={option.value} value={option.value}>
                         {option.label}
                       </option>
                     ))}
@@ -93,9 +102,9 @@ function SearchTable() {
 
                 <Grid className="grid_box" size={4}>
                   <FSelect name="category" label="Category">
-                    {CATEGORY_OPTION.map((option) => (
-                      <option key={option.value} value={option.label}>
-                        {option.label}
+                    {CATEGORY_OPTION.map((cate) => (
+                      <option key={cate.value} value={cate.value}>
+                        {cate.label}
                       </option>
                     ))}
                   </FSelect>
@@ -106,13 +115,7 @@ function SearchTable() {
                 </Grid>
 
                 <Grid className="grid_box" size={4}>
-                  <FSelect name="tools" label="Tools">
-                    {TOOLS_OPTION.map((option) => (
-                      <option key={option.value} value={option.label}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </FSelect>
+                  <ToolsMultipleSelect name="tool" label="Tool" />
                 </Grid>
 
                 <Grid className="grid_box" size={4}>
@@ -123,14 +126,7 @@ function SearchTable() {
                     type="submit"
                     variant="contained"
                     loading={isSubmitting}
-                    onClick={() => {
-                      navigate("/search");
-                    }}
-                    style={{
-                      background: "#35494B",
-                      color: "#FFFFFF",
-                      fontWeight: 700,
-                    }}
+                    disabled={!isDirty}
                   >
                     SHOW RESULTS
                   </LoadingButton>
@@ -142,6 +138,6 @@ function SearchTable() {
       </Accordion>
     </Box>
   );
-}
+};
 
 export default SearchTable;

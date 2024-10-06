@@ -1,28 +1,30 @@
 import React from "react";
 
-import {
-  Box,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
 
 import "./Card.scss";
+import { useNavigate } from "react-router-dom";
+import PATH_NAME from "../../constants/pathName.constants";
+import DisplayVideo from "../DisplayVideo";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
-function FCard({ data, other }) {
+function FCard({ video, other }) {
+  const navigate = useNavigate();
+
+  const [isFavorite, setIsFavorite] = React.useState(false);
+
+  const handleClickVideo = () => {
+    navigate(`${PATH_NAME.WATCH_VIDEO}/${video._id}`);
+  };
+
   return (
-    <div className="card_container" {...other}>
+    <div className="card_container" {...other} onClick={handleClickVideo}>
       <Card sx={{ borderRadius: "0px !important" }}>
         <CardActionArea>
-          <CardMedia
-            component="img"
-            image="/images/art3.png"
-            alt="green iguana"
-            sx={{
-              borderRadius: "0px",
-            }}
+          <DisplayVideo
+            videoSrc={video.videoUrl}
+            width={"330px"}
+            height={"186px"}
           />
           <CardContent sx={{ padding: "8px 16px" }}>
             <Typography
@@ -34,7 +36,7 @@ function FCard({ data, other }) {
                 lineHeight: "20px",
               }}
             >
-              Thinh Nguyen
+              {video?.userName.firstName} {video?.userName.lastName}
             </Typography>
             <Typography
               variant="h6"
@@ -45,7 +47,7 @@ function FCard({ data, other }) {
                 lineHeight: "20px",
               }}
             >
-              Art of landscape
+              {video?.title}
             </Typography>{" "}
             <Typography
               variant="h7"
@@ -54,22 +56,24 @@ function FCard({ data, other }) {
                 fontStyle: "italic",
                 fontSize: "1rem",
                 lineHeight: "14px",
+                textTransform: "capitalize",
               }}
             >
-              Medium
+              {video?.difficulty}
             </Typography>
             <div className="card_info">
-              <img
-                src="images/icons/favourite.png"
-                alt="favorite"
-                width="24px"
-                height="24px"
-              />
+              <div>
+                <FavoriteIcon
+                  color={isFavorite ? "error" : "disabled"}
+                  className="like_icon_fCard"
+                  fontSize="large"
+                />
+              </div>
               <Typography
                 variant="h7"
                 sx={{ fontWeight: 700, fontSize: "1rem", lineHeight: "20px" }}
               >
-                1 view
+                {video.view} view
               </Typography>
             </div>
           </CardContent>

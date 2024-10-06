@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import UploadVideo from "../../../features/Video/UploadVideo";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -26,7 +26,14 @@ function EditVideoPage() {
 
   return (
     <div>
-      <UploadVideo initialData={videoDetail} isEdit />
+      <UploadVideo
+        initialData={{
+          ...videoDetail,
+          material: videoDetail?.material?.split(","),
+          tool: videoDetail?.tool?.split(","),
+        }}
+        isEdit
+      />
     </div>
   );
 }
