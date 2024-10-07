@@ -9,11 +9,7 @@ import {
   DIFFICULTY_OPTION,
   DURATION_OPTION,
 } from "../../../constants/list.constants";
-
-import "./UploadVideo..scss";
-
 import { FormProvider, FSelect, FTextField } from "../../../components/Form";
-import { LoadingButton } from "@mui/lab";
 import { cloudinaryVideoUpload } from "../../../ultis/cloudinary";
 import { useDispatch, useSelector } from "react-redux";
 import ToolsMultipleSelect from "../../../components/ToolsMulticheck";
@@ -22,6 +18,10 @@ import UploadNewVideo from "./UploadNewVideo";
 import { createVideo, updateVideoInfo } from "../videoSlice";
 import { useNavigate } from "react-router-dom";
 import PATH_NAME from "../../../constants/pathName.constants";
+
+import { LoadingButton } from "@mui/lab";
+
+import "./UploadVideo..scss";
 
 const creatingVideoSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -35,7 +35,6 @@ const creatingVideoSchema = Yup.object().shape({
 });
 
 const UploadVideo = ({ initialData, isEdit = false }) => {
-  console.log("🚀 Puritin ~ UploadVideo ~ initialData:", initialData);
   const { user } = useAuth();
   const navigate = useNavigate();
 

@@ -14,7 +14,6 @@ const SettingPage = () => {
   const { user } = useAuth();
 
   const isLoading = useSelector((state) => state.user.isLoading);
-  console.log("🚀 Puritin ~ SettingPage ~ isLoading:", isLoading);
 
   const dispatch = useDispatch();
 

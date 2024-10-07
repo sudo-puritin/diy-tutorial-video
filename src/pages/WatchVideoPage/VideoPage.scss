@@ -1,3 +1,7 @@
+.videoPage_container {
+  padding: 24px 150px;
+}
+
 .player_display {
   width: 100%;
   max-width: calc(100vh * (16 / 9));
@@ -60,4 +64,43 @@
 .player_recommendation {
   width: 35%;
   max-width: 390px;
+}
+
+.miniCard_container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media screen and (max-width: 950px) {
+  .videoPage_container {
+    padding: 24px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .videoPage_container {
+    padding: 24px;
+
+    .player_display {
+      min-width: calc((180px * (16 / 9)));
+    }
+
+    .underPlayerDisplay_container {
+      flex-direction: column;
+
+      .player_detail {
+        width: 100%;
+      }
+
+      .player_description {
+        margin: 0;
+      }
+
+      .player_recommendation {
+        width: 100%;
+        max-width: none;
+      }
+    }
+  }
 }

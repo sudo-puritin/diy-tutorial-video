@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { searchVideo, setCategoryStore } from "../../features/Video/videoSlice";
+import { setCategoryStore } from "../../features/Video/videoSlice";
 import CategoryCard from "./categoryCard";
 import { CATEGORY_LIST } from "../../constants/list.constants";
 import PATH_NAME from "../../constants/pathName.constants";
@@ -19,9 +19,7 @@ const CategoryList = () => {
 
   const handleNavigateCategory = (category) => {
     dispatch(setCategoryStore(category));
-    dispatch(searchVideo({ category })).then(() =>
-      navigate(PATH_NAME.CATEGORY)
-    );
+    navigate(PATH_NAME.CATEGORY);
   };
 
   return (

@@ -7,10 +7,7 @@ import CollectionCard from "./collectionCard";
 import PATH_NAME from "../../constants/pathName.constants";
 
 import { Typography } from "@mui/material";
-import {
-  searchVideo,
-  setCollectionStore,
-} from "../../features/Video/videoSlice";
+import { setCollectionStore } from "../../features/Video/videoSlice";
 
 import "./collectionList.scss";
 import "swiper/css";
@@ -22,9 +19,7 @@ const CollectionList = () => {
 
   const handleNavigateCollection = (collection) => {
     dispatch(setCollectionStore(collection));
-    dispatch(searchVideo({ collection })).then(() =>
-      navigate(PATH_NAME.COLLECTION)
-    );
+    navigate(PATH_NAME.COLLECTION);
   };
 
   return (

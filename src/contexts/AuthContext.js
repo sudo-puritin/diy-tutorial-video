@@ -158,8 +158,6 @@ function AuthProvider({ children }) {
 
   useEffect(() => {
     if (updateUserInfo) {
-      console.log("🚀 Puritin ~ useEffect ~ updateUserInfo:", updateUserInfo);
-
       dispatch({
         type: UPDATE_SUCCESS,
         payload: { user: updateUserInfo },

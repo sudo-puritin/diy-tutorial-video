@@ -21,6 +21,10 @@
   color: #ffffff;
 }
 
+.login_text:hover {
+  filter: brightness(-50%);
+}
+
 @media screen and (max-width: 768px) {
   .register_container {
     width: 100%;

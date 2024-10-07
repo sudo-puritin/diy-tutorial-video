@@ -37,7 +37,7 @@ const FCard = ({ video, other }) => {
                 lineHeight: "20px",
               }}
             >
-              {video?.userName.firstName} {video?.userName.lastName}
+              {video?.author?.firstName} {video?.author?.lastName}
             </Typography>
             <Typography
               variant="h6"

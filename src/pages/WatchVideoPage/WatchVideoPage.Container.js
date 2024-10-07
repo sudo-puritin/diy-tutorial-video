@@ -1,15 +1,16 @@
-import React, { useMemo, useState } from "react";
-
-import "./VideoPage.scss";
+import React, { useEffect, useMemo, useState } from "react";
 import { MiniCard } from "../../components/MiniCard";
 import DisplayVideo from "../../components/DisplayVideo";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRating } from "../../features/Video/videoSlice";
+import { searchVideo, updateRating } from "../../features/Video/videoSlice";
 import { MATERIAL_OPTION, TOOLS_OPTION } from "../../constants/list.constants";
 import { formatArrayToStringLabel } from "../../ultis/formatArrayDataToLabel";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import useAuth from "../../hooks/useAuth";
+
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
+import "./VideoPage.scss";
 
 const WatchVideoPageContainer = () => {
   const params = useParams();
@@ -23,6 +24,13 @@ const WatchVideoPageContainer = () => {
     const founded = videoDetail?.rating?.find((item) => item === user?._id);
     return !!founded;
   }, [videoDetail?.rating, user?._id]);
+
+  const { videos } = useSelector((state) => state.video);
+  console.log("🚀 Puritin ~ WatchVideoPageContainer ~ videos:", videos);
+
+  useEffect(() => {
+    dispatch(searchVideo());
+  }, [dispatch]);
 
   const [isFavorite, setIsFavorite] = useState(isRated);
 
@@ -43,8 +51,7 @@ const WatchVideoPageContainer = () => {
           <div className="player_ownerInfo">
             <div className="avatar_box">
               <p style={{ fontWeight: 600 }}>
-                {videoDetail?.userName?.firstName}{" "}
-                {videoDetail?.userName?.lastName}
+                {videoDetail?.author?.firstName} {videoDetail?.author?.lastName}
               </p>
             </div>
             {isAuthenticated && (
@@ -93,8 +100,12 @@ const WatchVideoPageContainer = () => {
         </div>
 
         <div className="player_recommendation">
-          <h2>RECOMMENDATION</h2>
-          <MiniCard />
+          <h2>Recommendation</h2>
+          <div className="miniCard_container">
+            {videos.map((video) => (
+              <MiniCard video={video} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

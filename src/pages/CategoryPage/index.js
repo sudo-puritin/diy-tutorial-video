@@ -22,15 +22,16 @@ const CategoryPage = () => {
   const [category, setCategory] = useState(categoryStore);
 
   useEffect(() => {
-    if (!category && !videos.length) {
+    if (category) {
+      dispatch(searchVideo({ category }));
+    } else {
       dispatch(searchVideo());
     }
     dispatch(setCategoryStore(""));
-  }, [dispatch, videos, category]);
+  }, [dispatch, category]);
 
   const handleClick = (category) => {
     setCategory(category);
-    dispatch(searchVideo({ category }));
   };
 
   const onChangePage = (page) => {

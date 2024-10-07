@@ -51,7 +51,7 @@ const HeroCard = ({ video }) => {
             {video?.title}
           </Typography>
           <Typography variant="h6">
-            {video?.userName.firstName} {video?.userName.lastName}
+            {video?.author.firstName} {video?.author.lastName}
           </Typography>
         </div>
         <div className="displayHeroCard_detail">
@@ -81,7 +81,7 @@ const HeroCard = ({ video }) => {
           </div>
         </div>
 
-        {isAuthenticated && user._id === video.user_id && (
+        {isAuthenticated && user._id === video.author._id && (
           <div className="displayHeroCard_option">
             <Button size="small" color="warning" onClick={handleEditVideo}>
               Edit

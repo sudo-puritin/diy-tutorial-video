@@ -7,6 +7,7 @@ import { FormProvider, FTextField } from "../../components/Form";
 import LogoBasic from "../../components/LogoBasic";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { PRIMARY } from "../../themes";
 
 import {
   Alert,
@@ -84,7 +85,6 @@ const RegisterPage = () => {
       setError("responseError", error);
       toast.error(error.message);
     }
-    //trim data first name, lastname and email
   };
 
   return (
@@ -106,7 +106,13 @@ const RegisterPage = () => {
             )}
             <Alert severity="info">
               Already have an account?{" "}
-              <Link variant="subtitle2" component={RouterLink} to="/login">
+              <Link
+                className="login_text"
+                variant="subtitle2"
+                style={{ color: PRIMARY }}
+                component={RouterLink}
+                to="/login"
+              >
                 Sign in
               </Link>
             </Alert>

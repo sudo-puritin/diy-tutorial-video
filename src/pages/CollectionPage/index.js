@@ -25,11 +25,13 @@ const CollectionPage = () => {
   const [collection, setCollection] = useState(collectionStore);
 
   useEffect(() => {
-    if (!collection && !videos.length) {
+    if (collection) {
+      dispatch(searchVideo({ collection }));
+    } else {
       dispatch(searchVideo());
     }
     dispatch(setCollectionStore(""));
-  }, [dispatch, collection, videos]);
+  }, [dispatch, collection]);
 
   const handleClick = (collection) => {
     setCollection(collection);

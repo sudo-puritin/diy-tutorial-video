@@ -10,6 +10,7 @@ import "./UserPage.scss";
 
 const UserPage = () => {
   const { user } = useAuth();
+
   const location = useLocation();
 
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const UserPage = () => {
         >
           {user.firstName} {user.lastName}
         </Typography>
+        {user.bio}
 
         <div className="userPage_option_box">
           <TabContext value={value}>

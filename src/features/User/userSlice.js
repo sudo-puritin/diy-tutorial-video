@@ -7,6 +7,7 @@ const initialState = {
   isLoading: false,
   error: null,
   updateUserInfo: null,
+  userInfo: null,
 };
 
 const slice = createSlice({
@@ -25,6 +26,11 @@ const slice = createSlice({
       state.error = null;
       state.updateUserInfo = action.payload;
       toast.success("Update profile successfully");
+    },
+    getMyUserInfoSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.userInfo = action.payload;
     },
   },
 });
@@ -47,5 +53,16 @@ export const updateUserInfo =
       toast.error(error.message);
     }
   };
+
+export const getMyUserInfo = () => async (dispatch) => {
+  dispatch(slice.actions.startLoading());
+  try {
+    const response = await apiService.get(`${API.GET_USER_INFO}`);
+    dispatch(slice.actions.getMyUserInfoSuccess(response.data));
+  } catch (error) {
+    dispatch(slice.actions.hasError(error.message));
+    toast.error(error.message);
+  }
+};
 
 export default slice.reducer;
