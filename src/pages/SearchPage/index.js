@@ -77,7 +77,7 @@ const SearchPage = () => {
   };
 
   return (
-    <>
+    <div className="searchPage_container">
       <SearchTable
         title={title}
         category={category}
@@ -115,7 +115,7 @@ const SearchPage = () => {
           )}
         />
       </Stack>
-    </>
+    </div>
   );
 };
 

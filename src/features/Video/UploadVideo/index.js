@@ -128,7 +128,7 @@ const UploadVideo = ({ initialData, isEdit = false }) => {
         </p>
 
         <div className="draftDisplay_info">
-          <div style={{ width: "100%", maxWidth: "876px" }}>
+          <div style={{ width: "100%", maxWidth: "876px", marginTop: "24px" }}>
             <h4>Title</h4>
             <FTextField
               name="title"
