@@ -31,6 +31,7 @@ const RegisterSchema = Yup.object().shape({
     .trim()
     .required("Password is required")
     .matches(
+      // eslint-disable-next-line no-useless-escape
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
       "Must contain at least 6 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
     ),

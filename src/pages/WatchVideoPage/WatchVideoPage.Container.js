@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from "react";
 
 import "./VideoPage.scss";
-import { Avatar } from "@mui/material";
 import { MiniCard } from "../../components/MiniCard";
 import DisplayVideo from "../../components/DisplayVideo";
 import { useParams } from "react-router-dom";
