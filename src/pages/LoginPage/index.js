@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-
 import { FCheckbox, FormProvider, FTextField } from "../../components/Form";
-
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
+import LogoBasic from "../../components/LogoBasic";
+import { PRIMARY } from "../../themes";
 
 import {
   Alert,
@@ -18,16 +20,14 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
-import LogoBasic from "../../components/LogoBasic";
-import { PRIMARY } from "../../themes";
-
 import "./LoginPage.scss";
-import useAuth from "../../hooks/useAuth";
-import { toast } from "react-toastify";
 
 const LoginSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string().required("Password is required"),
+  email: Yup.string()
+    .trim()
+    .email("Invalid email")
+    .required("Email is required"),
+  password: Yup.string().trim().required("Password is required"),
 });
 
 const defaultValues = {
@@ -36,7 +36,7 @@ const defaultValues = {
   remember: false,
 };
 
-function LoginPage() {
+const LoginPage = () => {
   const methods = useForm({
     resolver: yupResolver(LoginSchema),
     defaultValues,
@@ -101,26 +101,33 @@ function LoginPage() {
                 Get started
               </Link>
             </Alert>
-            <FTextField name="email" label="Email address" />
-            <FTextField
-              name="password"
-              label="Password"
-              type={showPassword ? "text" : "password"}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment>
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={() => setShowPassword(!showPassword)}
-                      onMouseDown={(e) => e.preventDefault()}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
+            <div>
+              <Typography variant="h7" sx={{ fontWeight: 500 }}>
+                Email address
+              </Typography>
+              <FTextField name="email" />
+              <Typography variant="h7" sx={{ fontWeight: 500 }}>
+                Password
+              </Typography>
+              <FTextField
+                name="password"
+                type={showPassword ? "text" : "password"}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment>
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={() => setShowPassword(!showPassword)}
+                        onMouseDown={(e) => e.preventDefault()}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
           </Stack>
 
           <Stack
@@ -158,6 +165,6 @@ function LoginPage() {
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;

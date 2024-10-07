@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import logoHeader from "../../images/logoHeader.png";
 
-function LogoBasic({ other }) {
+const LogoBasic = ({ other }) => {
   const navigate = useNavigate();
   return (
     <div
@@ -13,6 +13,6 @@ function LogoBasic({ other }) {
       <img src={logoHeader} alt="logo" width="100%" />
     </div>
   );
-}
+};
 
 export default LogoBasic;

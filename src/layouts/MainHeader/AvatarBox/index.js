@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link, Link as RounterLink, useNavigate } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 import {
   Avatar,
@@ -8,11 +10,8 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
-import { Link, Link as RounterLink, useNavigate } from "react-router-dom";
 
-import useAuth from "../../../hooks/useAuth";
-
-function AvatarBox() {
+const AvatarBox = () => {
   const { user, isAuthenticated, logout } = useAuth();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -122,7 +121,7 @@ function AvatarBox() {
       )}
     </>
   );
-}
+};
 
 export default AvatarBox;
 

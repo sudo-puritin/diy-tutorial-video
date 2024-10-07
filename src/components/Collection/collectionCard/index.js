@@ -1,5 +1,4 @@
 import React from "react";
-import "./collectionCard.css";
 
 import {
   Card,
@@ -9,7 +8,9 @@ import {
   Typography,
 } from "@mui/material";
 
-function CollectionCard({ data, handleNavigateCollection }) {
+import "./collectionCard.css";
+
+const CollectionCard = ({ data, handleNavigateCollection }) => {
   return (
     <div onClick={() => handleNavigateCollection(data.value)}>
       <Card sx={{ borderRadius: 0, boxShadow: "none" }}>
@@ -38,6 +39,6 @@ function CollectionCard({ data, handleNavigateCollection }) {
       </Card>
     </div>
   );
-}
+};
 
 export default CollectionCard;

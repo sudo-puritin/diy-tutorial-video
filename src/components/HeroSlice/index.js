@@ -1,10 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import { Button } from "@mui/material";
 
 import classes from "./heroSlice.module.scss";
 
-function HeroSlice() {
+const HeroSlice = () => {
   const navigate = useNavigate();
 
   return (
@@ -32,6 +33,6 @@ function HeroSlice() {
       </div>
     </>
   );
-}
+};
 
 export default HeroSlice;

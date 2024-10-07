@@ -1,15 +1,15 @@
 import React from "react";
-import "./MyVideoPage.scss";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-
 import MyVideoList from "../../../features/Video/MyVideoList";
+import PATH_NAME from "../../../constants/pathName.constants";
 
 import { Button, Typography } from "@mui/material";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-import PATH_NAME from "../../../constants/pathName.constants";
 
-function MyVideoPage() {
+import "./MyVideoPage.scss";
+
+const MyVideoPage = () => {
   const { user } = useAuth();
 
   const navigate = useNavigate();
@@ -42,6 +42,6 @@ function MyVideoPage() {
       </div>
     </div>
   );
-}
+};
 
 export default MyVideoPage;

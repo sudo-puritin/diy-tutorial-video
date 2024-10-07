@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
-
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { useDispatch, useSelector } from "react-redux";
 import ResultList from "../../components/ResultList";
-
 import { COLLECTION_LIST } from "../../constants/list.constants";
+import { SUCCESS } from "../../themes";
 
 import { Chip, Pagination, PaginationItem, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
 import "./CollectionPage.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { SUCCESS } from "../../themes";
+
 import {
   searchVideo,
   setCollectionStore,
 } from "../../features/Video/videoSlice";
 
-function CollectionPage() {
+const CollectionPage = () => {
   const dispatch = useDispatch();
 
   const { videos, totalPage, collectionStore, page } = useSelector(
@@ -42,10 +41,10 @@ function CollectionPage() {
   };
 
   return (
-    <>
-      <Swiper spaceBetween={5} slidesPerView={7.5}>
+    <div className="collectionPage_container">
+      <Swiper spaceBetween={5} slidesPerView={"auto"}>
         {COLLECTION_LIST.map((col, index) => (
-          <SwiperSlide key={index} style={{ width: "max-content !important" }}>
+          <SwiperSlide key={index} style={{ width: `max-content !important` }}>
             <Chip
               className="chip_box_collection"
               label={col.label}
@@ -82,8 +81,8 @@ function CollectionPage() {
           />
         </Stack>
       </div>
-    </>
+    </div>
   );
-}
+};
 
 export default CollectionPage;

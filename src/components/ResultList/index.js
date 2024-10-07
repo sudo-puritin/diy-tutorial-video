@@ -1,12 +1,17 @@
 import React from "react";
-
-import "./ResultList.scss";
+import FCard from "../Card";
+import { useSelector } from "react-redux";
+import LoadingScreen from "../LoadingScreen";
 
 import Grid from "@mui/material/Grid2";
 
-import FCard from "../Card";
+import "./ResultList.scss";
 
-function ResultList({ videos }) {
+const ResultList = ({ videos }) => {
+  const { isLoading } = useSelector((state) => state.video);
+
+  if (isLoading) return <LoadingScreen />;
+
   return (
     <Grid className="list_container" container spacing={2} columns={12}>
       {videos?.map((video, index) => (
@@ -16,6 +21,6 @@ function ResultList({ videos }) {
       ))}
     </Grid>
   );
-}
+};
 
 export default ResultList;

@@ -1,21 +1,21 @@
 import React from "react";
-import "./collectionList.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
-import CollectionCard from "./collectionCard";
-
-import { Typography } from "@mui/material";
 import { COLLECTION_LIST } from "../../constants/list.constants";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import CollectionCard from "./collectionCard";
+import PATH_NAME from "../../constants/pathName.constants";
+
+import { Typography } from "@mui/material";
 import {
   searchVideo,
   setCollectionStore,
 } from "../../features/Video/videoSlice";
-import PATH_NAME from "../../constants/pathName.constants";
 
-function CollectionList() {
+import "./collectionList.scss";
+import "swiper/css";
+
+const CollectionList = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -55,6 +55,6 @@ function CollectionList() {
       </Swiper>
     </div>
   );
-}
+};
 
 export default CollectionList;

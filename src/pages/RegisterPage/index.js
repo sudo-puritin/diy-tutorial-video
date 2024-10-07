@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, Link as RouterLink, useNavigate } from "react-router-dom";
 import { FormProvider, FTextField } from "../../components/Form";
-
 import LogoBasic from "../../components/LogoBasic";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 import {
   Alert,
@@ -19,20 +19,23 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
 import "./RegisterPage.scss";
-import useAuth from "../../hooks/useAuth";
-import { toast } from "react-toastify";
 
 const RegisterSchema = Yup.object().shape({
-  firstName: Yup.string().required("First name is required"),
-  lastName: Yup.string().required("Last name is required"),
-  email: Yup.string().email("Invalid Email").required("Email is required"),
+  firstName: Yup.string().trim().required("First name is required"),
+  lastName: Yup.string().trim().required("Last name is required"),
+  email: Yup.string()
+    .email("Invalid Email")
+    .trim()
+    .required("Email is required"),
   password: Yup.string()
+    .trim()
     .required("Password is required")
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
       "Must contain at least 6 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
     ),
   passwordConfirmation: Yup.string()
+    .trim()
     .required("Please confirm your password")
     .oneOf([Yup.ref("password")], "Password must match"),
 });
@@ -45,7 +48,7 @@ const defaultValues = {
   passwordConfirmation: "",
 };
 
-function RegisterPage() {
+const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [showPasswordConfirmation, setShowPasswordConfirmation] =
@@ -106,54 +109,80 @@ function RegisterPage() {
                 Sign in
               </Link>
             </Alert>
-
-            <FTextField name="firstName" label="First name" />
-            <FTextField name="lastName" label="Last name" />
-            <FTextField name="email" label="Email address" />
-            <FTextField
-              name="password"
-              label="Password"
-              type={showPassword ? "text" : "password"}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment>
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={() => setShowPassword(!showPassword)}
-                      onMouseDown={(e) => e.preventDefault()}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <FTextField
-              name="passwordConfirmation"
-              label="Password Confirmation"
-              type={showPasswordConfirmation ? "text" : "password"}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment>
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={() =>
-                        setShowPasswordConfirmation(!showPasswordConfirmation)
-                      }
-                      onMouseDown={(e) => e.preventDefault()}
-                      edge="end"
-                    >
-                      {showPasswordConfirmation ? (
-                        <VisibilityOff />
-                      ) : (
-                        <Visibility />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
+            <div>
+              <div className="register_box">
+                <Typography variant="h7" sx={{ fontWeight: 500 }}>
+                  First Name
+                </Typography>
+                <FTextField name="firstName" />
+              </div>
+              <div className="register_box">
+                <Typography variant="h7" sx={{ fontWeight: 500 }}>
+                  Last Name
+                </Typography>
+                <FTextField name="lastName" />
+              </div>
+              <div className="register_box">
+                <Typography variant="h7" sx={{ fontWeight: 500 }}>
+                  Email address
+                </Typography>
+                <FTextField name="email" />
+              </div>
+              <div className="register_box">
+                <Typography variant="h7" sx={{ fontWeight: 500 }}>
+                  Password
+                </Typography>
+                <FTextField
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment>
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={() => setShowPassword(!showPassword)}
+                          onMouseDown={(e) => e.preventDefault()}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="register_box">
+                <Typography variant="h7" sx={{ fontWeight: 500 }}>
+                  Password Confirmation
+                </Typography>
+                <FTextField
+                  name="passwordConfirmation"
+                  type={showPasswordConfirmation ? "text" : "password"}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment>
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={() =>
+                            setShowPasswordConfirmation(
+                              !showPasswordConfirmation
+                            )
+                          }
+                          onMouseDown={(e) => e.preventDefault()}
+                          edge="end"
+                        >
+                          {showPasswordConfirmation ? (
+                            <VisibilityOff />
+                          ) : (
+                            <Visibility />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+            </div>
 
             <LoadingButton
               className="register_btn"
@@ -171,6 +200,6 @@ function RegisterPage() {
       </div>
     </div>
   );
-}
+};
 
 export default RegisterPage;

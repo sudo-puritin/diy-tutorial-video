@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { Box, Button, Typography, Container } from "@mui/material";
+
 import "./NotFoundPage.scss";
 
-function NotFoundPage() {
+const NotFoundPage = () => {
   return (
     <Container sx={{ display: "flex", height: "100%", alignItems: "center" }}>
       <Box
@@ -29,6 +30,6 @@ function NotFoundPage() {
       </Box>
     </Container>
   );
-}
+};
 
 export default NotFoundPage;

@@ -1,7 +1,7 @@
 import React from "react";
-import "./CreatingVideoPage.scss";
-
 import UploadVideo from "../../../features/Video/UploadVideo";
+
+import "./CreatingVideoPage.scss";
 
 const CreatingVideoPage = () => {
   return (

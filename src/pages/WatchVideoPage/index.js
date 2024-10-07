@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
-
-import "./VideoPage.scss";
-
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import useAuth from "../../hooks/useAuth";
 import { getVideoDetail } from "../../features/Video/videoSlice";
 import LoadingScreen from "../../components/LoadingScreen";
-
 import WatchVideoPageContainer from "./WatchVideoPage.Container";
-import useAuth from "../../hooks/useAuth";
+
+import "./VideoPage.scss";
 
 const WatchVideoPage = () => {
   const params = useParams();

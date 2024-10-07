@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
 
 import { AppBar, Menu, MenuItem, Typography } from "@mui/material";
@@ -10,7 +9,7 @@ import "./MainHeader.scss";
 
 import AvatarBox from "./AvatarBox";
 
-function MainHeader() {
+const MainHeader = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const navigate = useNavigate();
@@ -100,6 +99,6 @@ function MainHeader() {
       </div>
     </AppBar>
   );
-}
+};
 
 export default MainHeader;

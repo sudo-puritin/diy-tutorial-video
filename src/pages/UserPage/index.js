@@ -8,7 +8,7 @@ import { TabContext, TabList } from "@mui/lab";
 
 import "./UserPage.scss";
 
-function UserPage() {
+const UserPage = () => {
   const { user } = useAuth();
   const location = useLocation();
 
@@ -21,48 +21,47 @@ function UserPage() {
   };
 
   return (
-    <>
-      <div className="userPage_container">
-        <div className="leftSide_container">
-          <UploadAvatar />
-          <Typography
-            variant="h5"
-            sx={{ p: "5px", fontWeight: 700, textAlign: "center" }}
-          >
-            {user.firstName} {user.lastName}
-          </Typography>
+    <div className="userPage_container">
+      <div className="leftSide_container">
+        <UploadAvatar />
+        <Typography
+          variant="h5"
+          sx={{ p: "5px", fontWeight: 700, textAlign: "center" }}
+        >
+          {user.firstName} {user.lastName}
+        </Typography>
 
-          <div className="option_box">
-            <TabContext value={value}>
-              <Box>
-                <TabList
-                  onChange={handleChange}
-                  orientation="vertical"
-                  scrollButtons="auto"
-                >
-                  <Tab
-                    className="option_btn"
-                    label="Video"
-                    value="/user"
-                    onClick={() => navigate("/user")}
-                  />
-                  <Tab
-                    className="option_btn"
-                    label="Setting"
-                    value="/user/setting"
-                    onClick={() => navigate("/user/setting")}
-                  />
-                </TabList>
-              </Box>
-            </TabContext>
-          </div>
-        </div>
-        <div className="rightSide_container">
-          <Outlet />
+        <div className="userPage_option_box">
+          <TabContext value={value}>
+            <Box>
+              <TabList
+                className="userPage_option_btn"
+                onChange={handleChange}
+                orientation="vertical"
+                scrollButtons="auto"
+              >
+                <Tab
+                  className="option_btn"
+                  label="Video"
+                  value="/user"
+                  onClick={() => navigate("/user")}
+                />
+                <Tab
+                  className="option_btn"
+                  label="Setting"
+                  value="/user/setting"
+                  onClick={() => navigate("/user/setting")}
+                />
+              </TabList>
+            </Box>
+          </TabContext>
         </div>
       </div>
-    </>
+      <div className="rightSide_container">
+        <Outlet />
+      </div>
+    </div>
   );
-}
+};
 
 export default UserPage;

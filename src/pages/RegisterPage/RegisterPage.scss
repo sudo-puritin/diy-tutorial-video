@@ -6,9 +6,14 @@
   max-width: 900px;
   display: flex;
   flex-direction: row !important;
+
   .title,
   .form {
     width: 50%;
+  }
+
+  .register_box {
+    margin-bottom: 12px;
   }
 }
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FormProvider, FSelect, FTextField } from "../Form";
-
 import {
   CATEGORY_OPTION,
   DIFFICULTY_OPTION,

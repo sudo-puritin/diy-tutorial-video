@@ -1,14 +1,13 @@
 import React from "react";
-import "./App.css";
-
 import { BrowserRouter } from "react-router-dom";
 import Router from "./routes";
-
 import ThemeProvider from "./themes";
 import { AuthProvider } from "./contexts/AuthContext";
 import ToastMsg from "./components/ToastMsg";
 
-function App() {
+import "./App.css";
+
+const App = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -19,6 +18,6 @@ function App() {
       </BrowserRouter>
     </AuthProvider>
   );
-}
+};
 
 export default App;

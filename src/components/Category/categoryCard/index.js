@@ -1,15 +1,15 @@
 import React from "react";
-import "./categoryCard.scss";
+import { NEUTRAL, PRIMARY } from "../../../themes";
 
 import {
-  Box,
   Card,
   CardActionArea,
   CardContent,
   CardMedia,
   Typography,
 } from "@mui/material";
-import { NEUTRAL, PRIMARY } from "../../../themes";
+
+import "./categoryCard.scss";
 
 function CategoryCard({ data, handleNavigateCategory }) {
   return (
@@ -31,7 +31,7 @@ function CategoryCard({ data, handleNavigateCategory }) {
                 textAlign: "center",
                 fontSize: "1rem",
                 fontWeight: 700,
-                color: PRIMARY.constrastTest,
+                color: PRIMARY.contrastTest,
               }}
             >
               {data.label}

@@ -1,17 +1,18 @@
-import React from "react";
-
-import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
-
-import "./Card.scss";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PATH_NAME from "../../constants/pathName.constants";
 import DisplayVideo from "../DisplayVideo";
+
+import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-function FCard({ video, other }) {
+import "./Card.scss";
+
+const FCard = ({ video, other }) => {
   const navigate = useNavigate();
 
-  const [isFavorite, setIsFavorite] = React.useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handleClickVideo = () => {
     navigate(`${PATH_NAME.WATCH_VIDEO}/${video._id}`);
@@ -81,6 +82,6 @@ function FCard({ video, other }) {
       </Card>
     </div>
   );
-}
+};
 
 export default FCard;

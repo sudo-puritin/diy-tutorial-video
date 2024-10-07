@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
-
 import { Swiper } from "swiper/react";
 import { SwiperSlide } from "swiper/react";
-
+import { useDispatch, useSelector } from "react-redux";
 import ResultList from "../../components/ResultList";
-
 import { CATEGORY_LIST } from "../../constants/list.constants";
+import { searchVideo, setCategoryStore } from "../../features/Video/videoSlice";
+import { SUCCESS } from "../../themes";
 
 import { Chip, Pagination, PaginationItem, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useDispatch, useSelector } from "react-redux";
-import { searchVideo, setCategoryStore } from "../../features/Video/videoSlice";
-import { SUCCESS } from "../../themes";
 
 import "./CategoryPage.scss";
 
-function CategoryPage() {
+const CategoryPage = () => {
   const dispatch = useDispatch();
 
   const { videos, totalPage, categoryStore, page } = useSelector(
@@ -41,17 +38,16 @@ function CategoryPage() {
   };
 
   return (
-    <>
-      <Swiper spaceBetween={5} slidesPerView={7.5}>
+    <div className="categoryPage_container">
+      <Swiper spaceBetween={5} slidesPerView={"auto"}>
         {CATEGORY_LIST.map((cate, index) => (
-          <SwiperSlide key={index} style={{ width: "max-content" }}>
+          <SwiperSlide key={index} style={{ width: `max-content !important` }}>
             <Chip
-              className="chip_box"
-              value={cate.value}
+              className="chip_box_category"
               label={cate.label}
               onClick={() => handleClick(cate.value)}
               sx={{
-                width: "max-content",
+                width: "100%",
                 textTransform: `capitalize !important `,
                 background: cate.value === category ? SUCCESS.light : "",
               }}
@@ -82,8 +78,8 @@ function CategoryPage() {
           />
         </Stack>
       </div>
-    </>
+    </div>
   );
-}
+};
 
 export default CategoryPage;

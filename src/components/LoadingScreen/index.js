@@ -2,10 +2,11 @@ import React from "react";
 
 import { Box, CircularProgress } from "@mui/material";
 
-function LoadingScreen() {
+const LoadingScreen = () => {
   return (
     <Box
       sx={{
+        padding: "50px",
         width: "100%",
         height: "100%",
         display: "flex",
@@ -16,6 +17,6 @@ function LoadingScreen() {
       <CircularProgress />
     </Box>
   );
-}
+};
 
 export default LoadingScreen;

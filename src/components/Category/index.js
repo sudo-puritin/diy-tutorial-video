@@ -1,17 +1,18 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import { searchVideo, setCategoryStore } from "../../features/Video/videoSlice";
+import CategoryCard from "./categoryCard";
+import { CATEGORY_LIST } from "../../constants/list.constants";
+import PATH_NAME from "../../constants/pathName.constants";
+
 import { Typography } from "@mui/material";
 
 import "./categoryList.scss";
-import CategoryCard from "./categoryCard";
-import { CATEGORY_LIST } from "../../constants/list.constants";
-import { useDispatch } from "react-redux";
-import { searchVideo, setCategoryStore } from "../../features/Video/videoSlice";
-import { useNavigate } from "react-router-dom";
-import PATH_NAME from "../../constants/pathName.constants";
+import "swiper/css";
 
-function CategoryList() {
+const CategoryList = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -50,6 +51,6 @@ function CategoryList() {
       </Swiper>
     </div>
   );
-}
+};
 
 export default CategoryList;

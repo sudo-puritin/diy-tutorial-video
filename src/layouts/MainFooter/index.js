@@ -1,10 +1,11 @@
-import { AppBar, Box, Container, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { Typography } from "@mui/material";
+
 import classes from "./MainFooter.module.scss";
 
-function MainFooter() {
+const MainFooter = () => {
   return (
     <div className={classes["footer_container"]}>
       <div className={classes["logo"]}>
@@ -83,6 +84,6 @@ function MainFooter() {
       <div className={classes["div_right"]}></div>
     </div>
   );
-}
+};
 
 export default MainFooter;

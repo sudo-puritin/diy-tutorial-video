@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Avatar } from "@mui/material";
-import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
-
-import "./UploadAvatar.scss";
-
 import { cloudinaryUpload } from "../../../ultis/cloudinary";
 import useAuth from "../../../hooks/useAuth";
 import { useDispatch } from "react-redux";
 import { updateUserInfo } from "../userSlice";
+
+import { Avatar } from "@mui/material";
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+
+import "./UploadAvatar.scss";
 
 const UploadAvatar = () => {
   const { user } = useAuth();

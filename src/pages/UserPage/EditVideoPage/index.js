@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { getVideoDetail } from "../../../features/Video/videoSlice";
 import LoadingScreen from "../../../components/LoadingScreen";
 
-function EditVideoPage() {
+const EditVideoPage = () => {
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +36,6 @@ function EditVideoPage() {
       />
     </div>
   );
-}
+};
 
 export default EditVideoPage;

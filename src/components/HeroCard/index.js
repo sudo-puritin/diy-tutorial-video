@@ -1,18 +1,17 @@
 import React from "react";
-import "./HeroCard.scss";
-
-import { Button, Card, Typography } from "@mui/material";
-
-import { useNavigate } from "react-router-dom";
-
-import PATH_NAME from "../../constants/pathName.constants";
 import useAuth from "../../hooks/useAuth";
 import DisplayVideo from "../DisplayVideo";
 import AlertDelete from "../../features/Video/AlertDelete";
+import PATH_NAME from "../../constants/pathName.constants";
 import { MATERIAL_OPTION, TOOLS_OPTION } from "../../constants/list.constants";
 import { formatArrayToStringLabel } from "../../ultis/formatArrayDataToLabel";
+import { useNavigate } from "react-router-dom";
 
-function HeroCard({ video }) {
+import { Button, Card, Typography } from "@mui/material";
+
+import "./HeroCard.scss";
+
+const HeroCard = ({ video }) => {
   const { isAuthenticated, user } = useAuth();
 
   const navigate = useNavigate();
@@ -93,6 +92,6 @@ function HeroCard({ video }) {
       </div>
     </Card>
   );
-}
+};
 
 export default HeroCard;

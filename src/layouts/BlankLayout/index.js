@@ -4,7 +4,7 @@ import { WARNING } from "../../themes";
 
 import "./BlankLayout.scss";
 
-function BlankLayout() {
+const BlankLayout = () => {
   return (
     <div
       style={{
@@ -12,13 +12,13 @@ function BlankLayout() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
-        padding: "10px",
+        height: "100%",
+        padding: "12px",
       }}
     >
       <Outlet />
     </div>
   );
-}
+};
 
 export default BlankLayout;

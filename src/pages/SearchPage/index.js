@@ -1,20 +1,18 @@
 import React, { useEffect } from "react";
-
 import SearchTable from "../../components/SearchTable";
 import ResultList from "../../components/ResultList";
-
-import { Pagination, PaginationItem, Stack, Typography } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-
 import { useParams, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { searchVideo } from "../../features/Video/videoSlice";
 import { formatQuery } from "../../ultis/formatQuery";
 
+import { Pagination, PaginationItem, Stack, Typography } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
 import "./SearchPage.scss";
 
-function SearchPage() {
+const SearchPage = () => {
   const { query } = useParams();
 
   const dispatch = useDispatch();
@@ -119,6 +117,6 @@ function SearchPage() {
       </Stack>
     </>
   );
-}
+};
 
 export default SearchPage;

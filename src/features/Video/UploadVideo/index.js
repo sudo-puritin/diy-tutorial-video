@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import "./UploadVideo..scss";
-
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
 import useAuth from "../../../hooks/useAuth";
-
+import { useForm } from "react-hook-form";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import {
   CATEGORY_OPTION,
   COLLECTION_OPTION,
   DIFFICULTY_OPTION,
   DURATION_OPTION,
 } from "../../../constants/list.constants";
+
+import "./UploadVideo..scss";
 
 import { FormProvider, FSelect, FTextField } from "../../../components/Form";
 import { LoadingButton } from "@mui/lab";

@@ -1,6 +1,5 @@
 import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
-
+import { Outlet } from "react-router-dom";
 import MainHeader from "../MainHeader";
 import MainFooter from "../MainFooter";
 
@@ -8,22 +7,17 @@ import { Box, Stack } from "@mui/material";
 
 import "./MainLayout.scss";
 
-function MainLayout() {
-  const location = useLocation();
-
+const MainLayout = () => {
   return (
     <Stack sx={{ minHeight: "100vh" }}>
       <MainHeader />
-      <div
-        className="layout_container"
-        style={{ padding: location.pathname === "/" ? "" : "24px 150px" }}
-      >
+      <div>
         <Outlet />
       </div>
       <Box sx={{ flexGrow: 1 }} />
       <MainFooter />
     </Stack>
   );
-}
+};
 
 export default MainLayout;

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useFormContext } from "react-hook-form";
+import DisplayVideo from "../../../components/DisplayVideo";
+
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { Box, LinearProgress } from "@mui/material";
 
 import "video-react/dist/video-react.css";
-import { Box, LinearProgress } from "@mui/material";
-import DisplayVideo from "../../../components/DisplayVideo";
 
 const UploadNewVideo = ({ videoSrc, setVideoSrc }) => {
   const { setValue } = useFormContext();

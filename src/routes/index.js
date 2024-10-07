@@ -1,9 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-
 import MainLayout from "../layouts/MainLayout";
 import BlankLayout from "../layouts/BlankLayout";
-
 import HomePage from "../pages/HomePage";
 import CollectionPage from "../pages/CollectionPage";
 import CategoryPage from "../pages/CategoryPage";
@@ -11,17 +9,15 @@ import SearchPage from "../pages/SearchPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
-
 import UserPage from "../pages/UserPage";
 import MyVideoPage from "../pages/UserPage/MyVideoPage";
 import SettingPage from "../pages/UserPage/SettingPage";
 import CreatingVideoPage from "../pages/UserPage/CreatingVideoPage";
 import EditVideoPage from "../pages/UserPage/EditVideoPage";
-
 import AuthRequire from "./AuthRequire";
 import WatchVideoPage from "../pages/WatchVideoPage";
 
-function Router() {
+const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
@@ -54,6 +50,6 @@ function Router() {
       </Route>
     </Routes>
   );
-}
+};
 
 export default Router;

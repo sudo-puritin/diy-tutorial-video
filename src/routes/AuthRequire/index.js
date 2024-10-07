@@ -1,12 +1,11 @@
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
-
 import useAuth from "../../hooks/useAuth";
 import LoadingScreen from "../../components/LoadingScreen";
 
 import "./AuthRequire.scss";
 
-function AuthRequire({ children }) {
+const AuthRequire = ({ children }) => {
   const { isAuthenticated, isInitialized } = useAuth();
 
   const location = useLocation();
@@ -24,6 +23,6 @@ function AuthRequire({ children }) {
   }
 
   return children;
-}
+};
 
 export default AuthRequire;

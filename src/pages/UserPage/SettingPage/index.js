@@ -1,16 +1,16 @@
 import React from "react";
-import "./SettingPage.scss";
-
-import { Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
-
-import { LoadingButton } from "@mui/lab";
 import { FormProvider, FTextField } from "../../../components/Form";
 import { updateUserInfo } from "../../../features/User/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-function SettingPage() {
+import { Typography } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+
+import "./SettingPage.scss";
+
+const SettingPage = () => {
   const { user } = useAuth();
 
   const isLoading = useSelector((state) => state.user.isLoading);
@@ -25,7 +25,6 @@ function SettingPage() {
     bio: "",
     ...user,
   };
-  // console.log("🚀 Puritin ~ SettingPage ~ initialValue:", initialValue);
 
   const methods = useForm({ defaultValues });
 
@@ -104,6 +103,6 @@ function SettingPage() {
       </FormProvider>
     </>
   );
-}
+};
 
 export default SettingPage;

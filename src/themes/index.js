@@ -14,7 +14,7 @@ export const PRIMARY = {
   main: "#568284",
   dark: "#3F5B5C",
   darker: "#35494B",
-  constrastTest: "#FFFFFF",
+  contrastTest: "#FFFFFF",
 };
 
 export const SECONDARY = {
@@ -23,7 +23,7 @@ export const SECONDARY = {
   main: "#DFD2BF",
   dark: "#DAC7AB",
   darker: "#C5B38C",
-  constrastTest: "#FFFFFF",
+  contrastTest: "#FFFFFF",
 };
 
 export const SUCCESS = {
@@ -32,7 +32,7 @@ export const SUCCESS = {
   main: "#7DA36D",
   dark: "#5A8549",
   darker: "#3D692B",
-  constrastTest: "#FFFFFF",
+  contrastTest: "#FFFFFF",
 };
 
 export const WARNING = {
@@ -41,7 +41,7 @@ export const WARNING = {
   main: "#F6E388",
   dark: "#F1D348",
   darker: "#D9850F",
-  constrastTest: "#FFFFFF",
+  contrastTest: "#FFFFFF",
 };
 
 export const ERROR = {
@@ -50,7 +50,7 @@ export const ERROR = {
   main: "#F46A82",
   dark: "#E23E5A",
   darker: "#CD1735",
-  constrastTest: "#FFFFFF",
+  contrastTest: "#FFFFFF",
 };
 
 export const NEUTRAL = {

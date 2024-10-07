@@ -1,8 +1,9 @@
 import React from "react";
-import "./MiniCard.scss";
+import DisplayVideo from "../DisplayVideo";
 
 import { Card, CardContent, Typography } from "@mui/material";
-import DisplayVideo from "../DisplayVideo";
+
+import "./MiniCard.scss";
 
 export const MiniCard = ({ userId, videoId }) => {
   const stringTitle = `Tittle Video will be a long title, include 56 characters and you won't

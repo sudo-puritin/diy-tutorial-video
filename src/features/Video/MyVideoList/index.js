@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
-
-import "./VideoList.scss";
-
 import HeroCard from "../../../components/HeroCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyVideo } from "../videoSlice";
 import LoadingScreen from "../../../components/LoadingScreen";
 
-function MyVideoList({ userId }) {
+import "./VideoList.scss";
+
+const MyVideoList = ({ userId }) => {
   const dispatch = useDispatch();
 
   const { isLoading } = useSelector((state) => state.video);
@@ -33,6 +32,6 @@ function MyVideoList({ userId }) {
       ))}
     </div>
   );
-}
+};
 
 export default MyVideoList;
