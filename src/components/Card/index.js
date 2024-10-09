@@ -20,7 +20,7 @@ const FCard = ({ video, other }) => {
 
   return (
     <div className="card_container" {...other} onClick={handleClickVideo}>
-      <Card sx={{ borderRadius: "0px !important" }}>
+      <Card sx={{ borderRadius: "0px !important", height: "324px" }}>
         <CardActionArea>
           <DisplayVideo
             videoSrc={video.videoUrl}
@@ -45,7 +45,7 @@ const FCard = ({ video, other }) => {
                 mb: "8px",
                 fontWeight: 700,
                 fontSize: "1.2rem",
-                lineHeight: "20px",
+                lineHeight: "24px",
               }}
             >
               {video?.title}
@@ -72,7 +72,7 @@ const FCard = ({ video, other }) => {
               </div>
               <Typography
                 variant="h7"
-                sx={{ fontWeight: 700, fontSize: "1rem", lineHeight: "20px" }}
+                sx={{ fontWeight: 500, fontSize: "0.8rem" }}
               >
                 {video.view} view
               </Typography>

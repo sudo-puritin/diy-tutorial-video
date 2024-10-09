@@ -6,6 +6,7 @@ import ResultList from "../../components/ResultList";
 import { CATEGORY_LIST } from "../../constants/list.constants";
 import { searchVideo, setCategoryStore } from "../../features/Video/videoSlice";
 import { SUCCESS } from "../../themes";
+import { NotFoundVideoScreen } from "../../components/NotFoundVideoScreen";
 
 import { Chip, Pagination, PaginationItem, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -60,7 +61,11 @@ const CategoryPage = () => {
       <div style={{ display: "flex", justifyContent: "center" }}></div>
 
       <div style={{ marginTop: "20px" }}>
-        <ResultList videos={videos} />
+        {videos.length === 0 ? (
+          <NotFoundVideoScreen />
+        ) : (
+          <ResultList videos={videos} />
+        )}
 
         <Stack spacing={2} mt={2}>
           <Pagination

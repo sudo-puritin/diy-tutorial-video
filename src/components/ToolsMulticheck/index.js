@@ -35,7 +35,9 @@ const ToolsMultipleSelect = ({
               renderValue={
                 field.value?.length > 0 || other.label
                   ? undefined
-                  : () => <p>Select your tool(s)</p>
+                  : () => (
+                      <p style={{ letterSpacing: 1.2 }}>Select your tool(s)</p>
+                    )
               }
               {...other}
             >

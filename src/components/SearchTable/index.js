@@ -64,7 +64,7 @@ const SearchTable = ({
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <h3>Search for your video</h3>
+          <h3 style={{ letterSpacing: 1.2 }}>Search for your video</h3>
         </AccordionSummary>
         <AccordionDetails>
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>

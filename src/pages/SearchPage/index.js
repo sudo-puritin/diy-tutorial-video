@@ -5,6 +5,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { searchVideo } from "../../features/Video/videoSlice";
 import { formatQuery } from "../../ultis/formatQuery";
+import { NotFoundVideoScreen } from "../../components/NotFoundVideoScreen";
 
 import { Pagination, PaginationItem, Stack, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -97,7 +98,11 @@ const SearchPage = () => {
         Result
       </Typography>
 
-      <ResultList videos={videos} />
+      {videos.length === 0 ? (
+        <NotFoundVideoScreen />
+      ) : (
+        <ResultList videos={videos} />
+      )}
 
       <Stack spacing={2} mt={2}>
         <Pagination

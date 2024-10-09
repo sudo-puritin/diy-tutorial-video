@@ -4,17 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import ResultList from "../../components/ResultList";
 import { COLLECTION_LIST } from "../../constants/list.constants";
 import { SUCCESS } from "../../themes";
+import {
+  searchVideo,
+  setCollectionStore,
+} from "../../features/Video/videoSlice";
+import { NotFoundVideoScreen } from "../../components/NotFoundVideoScreen";
 
 import { Chip, Pagination, PaginationItem, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import "./CollectionPage.scss";
-
-import {
-  searchVideo,
-  setCollectionStore,
-} from "../../features/Video/videoSlice";
 
 const CollectionPage = () => {
   const dispatch = useDispatch();
@@ -64,7 +64,11 @@ const CollectionPage = () => {
       <div style={{ display: "flex", justifyContent: "center" }}></div>
 
       <div style={{ marginTop: "20px" }}>
-        <ResultList videos={videos} />
+        {videos.length === 0 ? (
+          <NotFoundVideoScreen />
+        ) : (
+          <ResultList videos={videos} />
+        )}
 
         <Stack spacing={2} mt={2}>
           <Pagination

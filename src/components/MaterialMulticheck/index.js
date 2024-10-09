@@ -27,7 +27,7 @@ const MaterialMultipleSelect = ({ name, field, label, ...other }) => {
             renderValue={
               field.value?.length > 0 || other.label
                 ? undefined
-                : () => <p>Select material(s)</p>
+                : () => <p style={{ letterSpacing: 1.2 }}>Select material(s)</p>
             }
             {...other}
           >

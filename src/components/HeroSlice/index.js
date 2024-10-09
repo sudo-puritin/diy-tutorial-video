@@ -25,9 +25,10 @@ const HeroSlice = () => {
           <Button
             className={classes["btnDetail"]}
             variant="contained"
+            sx={{ fontWeight: 600 }}
             onClick={() => navigate("/search")}
           >
-            Learn More
+            Explore Now
           </Button>
         </div>
       </div>
