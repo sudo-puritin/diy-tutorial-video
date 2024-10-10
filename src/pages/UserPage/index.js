@@ -31,7 +31,11 @@ const UserPage = () => {
         >
           {user.firstName} {user.lastName}
         </Typography>
-        {user.bio}
+        <div
+          style={{ fontSize: "1rem", textAlign: "center", fontStyle: "italic" }}
+        >
+          {user.bio}
+        </div>
 
         <div className="userPage_option_box">
           <TabContext value={value}>

@@ -26,3 +26,16 @@
     justify-content: flex-end;
   }
 }
+
+@media screen and (max-width: 640px) {
+  .heroCard_container {
+    flex-direction: column !important;
+
+    .displayHeroCard_info {
+      padding: 8px 4px;
+    }
+    .heroCard_detail {
+      padding-right: 0 !important;
+    }
+  }
+}

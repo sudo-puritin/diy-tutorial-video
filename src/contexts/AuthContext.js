@@ -130,7 +130,7 @@ function AuthProvider({ children }) {
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken, remember);
 
-          const response = await apiService.get(API.GET_USER_INFO);
+          const response = await apiService.get(API.GET_MY_USER_INFO);
           const user = response.data;
 
           dispatch({

@@ -7,6 +7,7 @@ import "./DisplayVideo.scss";
 const DisplayVideo = ({ videoSrc, width, height }) => {
   return (
     <div
+      className="displayVideo_container"
       style={{
         width: `${width}`,
         height: `${height}`,

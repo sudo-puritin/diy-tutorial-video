@@ -56,3 +56,12 @@
     }
   }
 }
+
+@media screen and (max-width: 350px) {
+  .userPage_container {
+    padding: 24px 4px;
+  }
+  .userPage_option_box {
+    width: 310px !important;
+  }
+}

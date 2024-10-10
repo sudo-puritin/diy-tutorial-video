@@ -14,3 +14,13 @@
     }
   }
 }
+
+@media screen and (max-width: 370px) {
+  .card_container {
+    width: 304px !important;
+
+    .card_cardContent {
+      padding: 8px 4px !important;
+    }
+  }
+}

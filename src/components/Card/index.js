@@ -27,7 +27,10 @@ const FCard = ({ video, other }) => {
             width={"330px"}
             height={"186px"}
           />
-          <CardContent sx={{ padding: "8px 16px" }}>
+          <CardContent
+            className="card_cardContent"
+            sx={{ padding: "8px 16px" }}
+          >
             <Typography
               variant="h6"
               sx={{

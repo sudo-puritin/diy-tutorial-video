@@ -54,15 +54,17 @@ export const updateUserInfo =
     }
   };
 
-export const getMyUserInfo = () => async (dispatch) => {
-  dispatch(slice.actions.startLoading());
-  try {
-    const response = await apiService.get(`${API.GET_USER_INFO}`);
-    dispatch(slice.actions.getMyUserInfoSuccess(response.data));
-  } catch (error) {
-    dispatch(slice.actions.hasError(error.message));
-    toast.error(error.message);
-  }
-};
+export const getMyUserInfo =
+  ({ userId }) =>
+  async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await apiService.get(`${API.GET_USER_INFO}/${userId}`);
+      dispatch(slice.actions.getMyUserInfoSuccess(response.data));
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      toast.error(error.message);
+    }
+  };
 
 export default slice.reducer;

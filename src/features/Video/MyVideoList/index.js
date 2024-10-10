@@ -9,9 +9,7 @@ import "./VideoList.scss";
 const MyVideoList = ({ userId }) => {
   const dispatch = useDispatch();
 
-  const { isLoading } = useSelector((state) => state.video);
-
-  const { myVideo } = useSelector((state) => state.video);
+  const { isLoading, myVideo } = useSelector((state) => state.video);
 
   useEffect(() => {
     userId && dispatch(getMyVideo({ userId }));

@@ -6,3 +6,30 @@
     top: 50% !important;
   }
 }
+@media screen and (max-width: 497px) {
+  .displayVideo_container {
+    width: 384px !important;
+    height: 216px !important;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .displayVideo_container {
+    width: 352px !important;
+    height: 198px !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .displayVideo_container {
+    width: 329px !important;
+    height: 185px !important;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .displayVideo_container {
+    width: 304px !important;
+    height: 171px !important;
+  }
+}

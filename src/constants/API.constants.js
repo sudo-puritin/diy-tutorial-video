@@ -1,7 +1,8 @@
 export const API = {
   REGISTER: "/users",
   LOGIN: "/users/login",
-  GET_USER_INFO: "/users/currentUser",
+  GET_MY_USER_INFO: "/users/currentUser",
+  GET_USER_INFO: "/users",
   UPDATE_USER_INFO: "/users",
   CREATE_VIDEO: "/videos",
   GET_VIDEO: "/videos",

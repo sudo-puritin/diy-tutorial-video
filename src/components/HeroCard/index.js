@@ -28,6 +28,7 @@ const HeroCard = ({ video }) => {
 
   return (
     <Card
+      className="heroCard_container"
       sx={{
         width: "100%",
         height: "100%",
@@ -47,10 +48,14 @@ const HeroCard = ({ video }) => {
 
       <div className="displayHeroCard_info" onClick={handleWatchVideo}>
         <div className="displayMainHeroCard_detail">
-          <Typography variant="h5" sx={{ fontWeight: 700 }}>
+          <Typography
+            className="heroCard_videoTitle"
+            variant="h5"
+            sx={{ fontWeight: 700 }}
+          >
             {video?.title}
           </Typography>
-          <Typography variant="h6">
+          <Typography className="heroCard_name" variant="h6">
             {video?.author.firstName} {video?.author.lastName}
           </Typography>
         </div>

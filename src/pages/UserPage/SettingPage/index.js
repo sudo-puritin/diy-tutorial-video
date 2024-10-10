@@ -75,7 +75,7 @@ const SettingPage = () => {
             </Typography>
 
             <FTextField
-              name="description"
+              name="bio"
               placeholder={"Tell viewers about yourself"}
               multiline
               rows={4}
