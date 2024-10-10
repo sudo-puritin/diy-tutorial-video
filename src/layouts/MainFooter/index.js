@@ -66,18 +66,21 @@ const MainFooter = () => {
             alt="facebook"
             width="32px"
             height="32px"
+            style={{ cursor: "pointer" }}
           />
           <img
             src="https://img.icons8.com/?size=100&id=6Fsj3rv2DCmG&format=png&color=35494B"
             alt="twitterX"
             width="32px"
             height="32px"
+            style={{ cursor: "pointer" }}
           />
           <img
             src="https://img.icons8.com/?size=100&id=32292&format=png&color=35494B"
             alt="instagram"
             width="32px"
             height="32px"
+            style={{ cursor: "pointer" }}
           />
         </div>
       </div>

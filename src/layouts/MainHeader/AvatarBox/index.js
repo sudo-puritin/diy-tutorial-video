@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Link as RounterLink, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import "./AvatarBox.scss";
 
 import {
   Avatar,
@@ -63,6 +64,7 @@ const AvatarBox = () => {
       </Box>
       <Divider sx={{ boderyStyle: "dashed" }} />
       <MenuItem
+        className="handleHover"
         onClick={handleProfileMenuClose}
         to="/user"
         component={RounterLink}
@@ -71,6 +73,7 @@ const AvatarBox = () => {
         My Profile
       </MenuItem>
       <MenuItem
+        className="handleHover"
         onClick={handleProfileMenuClose}
         to="/user/setting"
         component={RounterLink}
@@ -81,7 +84,11 @@ const AvatarBox = () => {
 
       <Divider sx={{ boderyStyle: "dashed" }} />
 
-      <MenuItem onClick={handleLogout} sx={{ mx: 1, color: "red" }}>
+      <MenuItem
+        className="handleHover"
+        onClick={handleLogout}
+        sx={{ mx: 1, color: "red" }}
+      >
         Sign out
       </MenuItem>
     </Menu>
@@ -92,6 +99,7 @@ const AvatarBox = () => {
       {isAuthenticated ? (
         <div>
           <Avatar
+            className="handleHover"
             {...stringAvatar(`${user.firstName}${" "}${user.lastName}`)}
             onClick={handleProfileMenuOpen}
             src={user.avatar}
@@ -101,7 +109,11 @@ const AvatarBox = () => {
         </div>
       ) : (
         <div>
-          <Link to="/login" style={{ textDecoration: "none" }}>
+          <Link
+            to="/login"
+            style={{ textDecoration: "none" }}
+            className="handleHover"
+          >
             <Typography
               variant="h6"
               noWrap
