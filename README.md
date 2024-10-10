@@ -24,20 +24,26 @@ Users can manage videos, other users can interact with video posts.
 ### Authentication
 
 As a user, I can sign in with my email and password.
+
 As a user, I can register for a new account with email and password.
+
 As a user, I can stay signed in after refreshing the page.
 
 ### Users
 
 As a user, I can see my current profile info.
+
 As a user, I can update my profile with Avatar, Name.
 
 ### Videos
 
-As a user, I can see all videos from other users
 As a user, I can create a new video with description.
+
 As a user, I can edit my video info.
+
 As a user, I can remove my video.
+
+As a user, I can see all videos from other users
 
 ### Reactions
 

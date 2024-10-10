@@ -89,6 +89,10 @@
     .underPlayerDisplay_container {
       flex-direction: column;
 
+      .avatar_box {
+        font-size: 1.2rem;
+      }
+
       .player_detail {
         width: 100%;
       }
@@ -100,6 +104,27 @@
       .player_recommendation {
         width: 100%;
         max-width: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .videoPage_container {
+    padding: 16px 4px;
+
+    .player_display {
+      padding-left: 4px;
+    }
+    .underPlayerDisplay_container {
+      padding-left: 4px;
+
+      .player_description {
+        font-size: 1rem;
+      }
+
+      .player_info {
+        font-size: 0.8rem;
       }
     }
   }
