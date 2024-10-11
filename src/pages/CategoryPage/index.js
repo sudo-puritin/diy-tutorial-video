@@ -13,6 +13,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import "./CategoryPage.scss";
+import LoadingScreen from "../../components/LoadingScreen";
 
 const CategoryPage = () => {
   const dispatch = useDispatch();

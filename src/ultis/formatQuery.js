@@ -1,5 +1,6 @@
 export const formatQuery = (data) => {
   let queryParams = { page: 1 };
+
   if (data.page) {
     queryParams.page = data.page;
   }

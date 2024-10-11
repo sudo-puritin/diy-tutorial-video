@@ -1,7 +1,12 @@
 import React from "react";
 import { PRIMARY } from "../../themes";
+import { useSelector } from "react-redux";
+import LoadingScreen from "../LoadingScreen";
 
 export const NotFoundVideoScreen = () => {
+  const { isLoading } = useSelector((state) => state.video);
+
+  if (isLoading) return <LoadingScreen />;
   return (
     <div
       style={{
